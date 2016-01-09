@@ -5,7 +5,7 @@ File list
 - .zsh\_profile
 - .vimrc
 - .tmux.conf
-- MacOSX 
+- MacOSX/ 
     - Brewfile
 - .gitignore
 - .gitmessage.txt
@@ -19,7 +19,9 @@ $ ./setup
 ```
 
 # Screenshot
+## tmux, Zsh, Vim
 ![](screenshots/screenshot.png)
-
+## COMMIT_EDITMSG 
+![](screenshots/commit_editmsg.png)
 # Author
 [rnitame](https://github.com/rnitame)
