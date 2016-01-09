@@ -1,0 +1,32 @@
+update
+upgrade
+
+install coreutils
+install curl
+install freetype
+install fzf
+install gibo
+install git
+install go
+install jq
+install libevent
+install libpng
+install libtiff
+install libtool
+install nkf
+install oniguruma
+install openssl
+install pidcat
+install readline
+install rbenv
+install reattach-to-user-namespace
+install sqlite
+install sqlitebrowser
+install tldr
+install tmux
+install tree
+install vim
+install xz
+install zsh-completions
+
+clean
