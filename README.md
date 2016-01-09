@@ -23,5 +23,6 @@ $ ./setup
 ![](screenshots/screenshot.png)
 ## COMMIT_EDITMSG 
 ![](screenshots/commit_editmsg.png)
+
 # Author
 [rnitame](https://github.com/rnitame)
