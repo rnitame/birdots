@@ -1,8 +1,50 @@
 #!/bin/sh
+
+# Mac と Linux でインストールする内容を変える
+if [`uname` = "Darwin"]; then
+    ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+
+    if [-z `which brew` ]; then
+        # Homebrew
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew update && brew upgrade && brew doctor
+    fi
+    brew tap Homebrew/bundle
+
+    cd ~/.dotfiles/MacOSX/
+    brew bundle
+
+    # iTerm2 のカラーテーマ
+    git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git ~/Developer/iTerm2-Color-Schemes
+else if [`uname` = "Linux"]; then
+    ln -sf ~/.dotfiles/Linux/.tmux_linux.conf ~/.tmux.conf
+fi
+
+chsh -s /bin/zsh
+
+# NeoBundle インストール
+mkdir -p ~/.vim/bundle
+git clone git@github.com:Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+git clone git@github.com:scrooloose/nerdtree ~/.vim/bundle/nerdtree
+git clone git@github.com:Townk/vim-autoclose ~/.vim/bundle/vim-autoclose
+git clone git@github.com:scrooloose/syntastic ~/.vim/bundle/syntastic
+git clone git@github.com:plasticboy/vim-markdown ~/.vim/bundle/vim-markdown
+git clone git@github.com:kannokanno/previm ~/.vim/bundle/previm
+git clone git@github.com:tyru/open-browser.vim ~/.vim/bundle/open-browser.vim
+
+# Vim のテーマ
+git clone https://github.com/jonathanfilip/vim-lucius ~/vim-lucius
+mv ~/vim-lucius/colors/lucius.vim ~/.vim/colors
+rm -rf ~/vim-lucius
+vim +NeoBundleInstall +q
+
+# Zsh のカラーテーマ
+git clone https://github.com/seebi/dircolors-solarized ~/Developer/dircolors-solarized
+
+# シンボリックリンク
 ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.zsh_profile ~/.zsh_profile
 ln -sf ~/.dotfiles/.vimrc ~/.vimrc
-ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/.gitmessage.txt ~/.gitmessage.txt
