@@ -5,8 +5,11 @@ File list
 - .zsh\_profile
 - .vimrc
 - .tmux.conf
+- Linux/
+    - .tmux_linux.conf
 - MacOSX/ 
     - Brewfile
+- .gitconfig
 - .gitignore
 - .gitmessage.txt
 
