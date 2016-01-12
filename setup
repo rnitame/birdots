@@ -48,3 +48,6 @@ ln -sf ~/.dotfiles/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/.gitmessage.txt ~/.gitmessage.txt
+
+# Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
+ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
