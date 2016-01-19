@@ -19,7 +19,7 @@ if [`uname` = "Darwin"]; then
 
     # Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
     ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
-else if [`uname` = "Linux"]; then
+elif [`uname` = "Linux"]; then
     ln -sf ~/.dotfiles/Linux/.tmux_linux.conf ~/.tmux.conf
 fi
 
