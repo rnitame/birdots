@@ -2,11 +2,12 @@
 File list
 
 - .zshrc
-- .zsh\_profile
+- .zsh_profile
 - .vimrc
 - .tmux.conf
 - Linux/
     - .tmux_linux.conf
+    - .zshrc_linux
 - MacOSX/ 
     - Brewfile
 - .gitconfig
@@ -16,14 +17,16 @@ File list
 # Install
 
 ```
-$ git clone git@github.com:rnitame/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/rnitame/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
 $ ./setup
 ```
 
 # Screenshot
-## tmux, Zsh, Vim
-![](screenshots/screenshot.png)
+## Mac OSX
+![](screenshots/screenshot_mac.png)
+## Linux
+
 ## COMMIT_EDITMSG 
 ![](screenshots/commit_editmsg.png)
 
