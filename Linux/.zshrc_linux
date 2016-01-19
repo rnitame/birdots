@@ -2,7 +2,7 @@
 autoload -Uz colors
 colors
 export CLICOLOR=1
-eval $(/usr/local/bin/gdircolors ~/Developer/dircolors-solarized/dircolors.ansi-light)
+eval $(dircolors ~/Developer/dircolors-solarized/dircolors.ansi-light)
 export LSCOLORS=ExFxBxDxCxegedabagacad
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
