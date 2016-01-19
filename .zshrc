@@ -69,8 +69,8 @@ function vcs_echo {
 DEFAULT='$'
 ERROR='%F{red}$%f'
 
-DEFAULT=$'\U1F414 ' # にわとり 
-ERROR=$'\U1F363 ' # sushi 
+DEFAULT=$'\U1F34E \U1F414 ' # りんごとにわとり
+ERROR=$'\U1F34E \U1F363 ' # りんごとsushi 
 
 PROMPT=$'
 %F{green}[%~]%f `vcs_echo`

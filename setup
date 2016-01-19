@@ -3,6 +3,7 @@
 # Mac と Linux でインストールする内容を変える
 if [ `uname` = "Darwin" ]; then
     ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+    ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 
     if [-z `which brew` ]; then
         # Homebrew
@@ -21,6 +22,7 @@ if [ `uname` = "Darwin" ]; then
     ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
 elif [ `uname` = "Linux" ]; then
     ln -sf ~/.dotfiles/Linux/.tmux_linux.conf ~/.tmux.conf
+    ln -sf ~/.dotfiles/Linux/.zshrc_linux ~/.zshrc
 fi
 
 chsh -s /bin/zsh
@@ -46,7 +48,6 @@ vim +NeoBundleInstall +q
 git clone https://github.com/seebi/dircolors-solarized ~/Developer/dircolors-solarized
 
 # シンボリックリンク
-ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.zsh_profile ~/.zsh_profile
 ln -sf ~/.dotfiles/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
