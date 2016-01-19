@@ -37,7 +37,7 @@ git clone https://github.com/tyru/open-browser.vim ~/.vim/bundle/open-browser.vi
 
 # Vim のテーマ
 git clone https://github.com/jonathanfilip/vim-lucius ~/vim-lucius
-mv ~/vim-lucius/colors/lucius.vim ~/.vim/colors
+mv ~/vim-lucius/colors/lucius.vim ~/.vim/colors/
 rm -rf ~/vim-lucius
 vim +NeoBundleInstall +q
 
