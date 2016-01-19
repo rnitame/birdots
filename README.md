@@ -36,7 +36,7 @@ $ rm -rf ~/.dotfiles
 ## Mac OSX
 ![](screenshots/screenshot_mac.png)
 ## Linux
-
+![](screenshots/screenshot_linux.png)
 ## COMMIT_EDITMSG 
 ![](screenshots/commit_editmsg.png)
 
