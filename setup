@@ -27,13 +27,13 @@ chsh -s /bin/zsh
 
 # NeoBundle インストール
 mkdir -p ~/.vim/bundle
-git clone git@github.com:Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-git clone git@github.com:scrooloose/nerdtree ~/.vim/bundle/nerdtree
-git clone git@github.com:Townk/vim-autoclose ~/.vim/bundle/vim-autoclose
-git clone git@github.com:scrooloose/syntastic ~/.vim/bundle/syntastic
-git clone git@github.com:plasticboy/vim-markdown ~/.vim/bundle/vim-markdown
-git clone git@github.com:kannokanno/previm ~/.vim/bundle/previm
-git clone git@github.com:tyru/open-browser.vim ~/.vim/bundle/open-browser.vim
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+git clone https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
+git clone https://github.com/Townk/vim-autoclose ~/.vim/bundle/vim-autoclose
+git clone https://github.com/scrooloose/syntastic ~/.vim/bundle/syntastic
+git clone https://github.com/plasticboy/vim-markdown ~/.vim/bundle/vim-markdown
+git clone https://github.com/kannokanno/previm ~/.vim/bundle/previm
+git clone https://github.com/tyru/open-browser.vim ~/.vim/bundle/open-browser.vim
 
 # Vim のテーマ
 git clone https://github.com/jonathanfilip/vim-lucius ~/vim-lucius
