@@ -16,6 +16,9 @@ if [`uname` = "Darwin"]; then
 
     # iTerm2 のカラーテーマ
     git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git ~/Developer/iTerm2-Color-Schemes
+
+    # Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
+    ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
 else if [`uname` = "Linux"]; then
     ln -sf ~/.dotfiles/Linux/.tmux_linux.conf ~/.tmux.conf
 fi
@@ -48,6 +51,3 @@ ln -sf ~/.dotfiles/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/.gitmessage.txt ~/.gitmessage.txt
-
-# Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
-ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
