@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Mac と Linux でインストールする内容を変える
-if ["$(uname)" = "Darwin"]; then
+if [ `uname` = "Darwin" ]; then
     ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
     if [-z `which brew` ]; then
@@ -19,7 +19,7 @@ if ["$(uname)" = "Darwin"]; then
 
     # Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
     ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
-elif ["$(uname)" = "Linux"]; then
+elif [ `uname` = "Linux" ]; then
     ln -sf ~/.dotfiles/Linux/.tmux_linux.conf ~/.tmux.conf
 fi
 
