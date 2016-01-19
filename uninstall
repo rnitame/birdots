@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# シンボリックリンク削除
+unlink ~/.zshrc
+unlink ~/.zsh_profile
+unlink ~/.vimrc
+unlink ~/.gitignore
+unlink ~/.gitignore 
+unlink ~/.gitmessage.txt 
+
+# 不要ファイル削除
+rm -rf ~/.vim/ 
+rm -rf ~/Developer/dircolors-solarized/ 
+

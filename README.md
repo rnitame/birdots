@@ -1,12 +1,14 @@
 # dotfiles
 File list
 
+- install 
+- uninstall
 - .zshrc
 - .zsh_profile
 - .vimrc
 - .tmux.conf
 - Linux/
-    - .tmux_linux.conf
+    - .tmux.conf_linux
     - .zshrc_linux
 - MacOSX/ 
     - Brewfile
@@ -19,7 +21,15 @@ File list
 ```
 $ git clone https://github.com/rnitame/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
-$ ./setup
+$ ./install 
+```
+
+# Uninstall
+
+```
+$ cd ~/.dotfiles 
+$ ./uninstall 
+$ rm -rf ~/.dotfiles 
 ```
 
 # Screenshot
