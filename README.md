@@ -8,7 +8,6 @@ File list
 - .vimrc
 - .tmux.conf
 - Linux/
-    - .tmux.conf_linux
     - .zshrc_linux
 - MacOSX/ 
     - Brewfile
