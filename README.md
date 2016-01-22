@@ -4,7 +4,7 @@ File list
 - install 
 - uninstall
 - .zshrc
-- .zsh_profile
+- .zshenv
 - .vimrc
 - .tmux.conf
 - Linux/

@@ -1,6 +1,3 @@
-# PATH setting
-export PATH="/usr/local/bin:/usr/bin:/usr/local:/bin:/usr/local/sbin:/usr/sbin:/sbin:/Applications/UpTeX.app/teTeX/bin:/usr/texbin:/opt/X11/bin:~/bin/FDK/Tools/osx:/usr/local/opt/llvm/bin:/Users/Ardeidae/Developer/android-sdk/platform-tools:/Users/Ardeidae/Developer/android-sdk/tools:/Library/TeX/texbin:$GOROOT/bin:$GOPATH/bin:~/Developer/go/bin"
-
 # 色を使えるようにする
 autoload -Uz colors
 colors
