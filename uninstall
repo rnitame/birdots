@@ -2,7 +2,7 @@
 
 # シンボリックリンク削除
 unlink ~/.zshrc
-unlink ~/.zsh_profile
+unlink ~/.zshenv
 unlink ~/.vimrc
 unlink ~/.gitignore
 unlink ~/.gitignore 
