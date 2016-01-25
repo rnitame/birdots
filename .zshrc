@@ -1,3 +1,12 @@
+# nodebrew
+if [[ -f ~/.nodebrew/nodebrew ]]; then
+    export PATH=$HOME/.nodebrew/current/bin:$PATH
+    nodebrew use v0.10.22
+fi
+
+# phpenv
+eval "$(phpenv init -)"
+
 # 色を使えるようにする
 autoload -Uz colors
 colors
