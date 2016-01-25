@@ -1,12 +1,3 @@
-# nodebrew
-if [[ -f ~/.nodebrew/nodebrew ]]; then
-    export PATH=$HOME/.nodebrew/current/bin:$PATH
-    nodebrew use v0.10.22
-fi
-
-# phpenv
-eval "$(phpenv init -)"
-
 # 色を使えるようにする
 autoload -Uz colors
 colors
@@ -100,6 +91,20 @@ SPROMPT="%{$fg[blue]%}もしかして: %B%r%b ${reset_color} (y, n, a, e)-> "
 # ビープ音を鳴らさない
 setopt nobeep
 setopt no_list_beep
+
+# rbenv
+export PATH="$PATH:$HOME/.rbenv/shims/"
+eval "$(rbenv init -)"
+
+# nodebrew
+if [[ -f ~/.nodebrew/nodebrew ]]; then
+    export PATH="$PATH:$HOME/.nodebrew/current/bin"
+    nodebrew use v0.10.22
+fi
+
+# phpenv
+export PATH="$PATH:~/.phpenv/bin"
+eval "$(phpenv init -)"
 
 # percol の設定
 # {{{

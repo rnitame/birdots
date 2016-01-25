@@ -47,7 +47,6 @@ vim +NeoBundleInstall +q
 git clone https://github.com/seebi/dircolors-solarized ~/Developer/dircolors-solarized
 
 # シンボリックリンク
-ln -sf ~/.dotfiles/.zshenv ~/.zshenv 
 ln -sf ~/.dotfiles/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
