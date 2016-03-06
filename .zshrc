@@ -92,20 +92,22 @@ SPROMPT="%{$fg[blue]%}もしかして: %B%r%b ${reset_color} (y, n, a, e)-> "
 setopt nobeep
 setopt no_list_beep
 
-# rbenv
-export PATH="$PATH:$HOME/.rbenv/shims/"
-eval "$(rbenv init -)"
+# Homebrew's sbin
+export PATH="$PATH:/usr/local/sbin"
 
-# nodebrew
-if [[ -f ~/.nodebrew/nodebrew ]]; then
-    export PATH="$PATH:$HOME/.nodebrew/current/bin"
-    nodebrew use v0.10.22
+# Android SDK
+export PATH="$PATH:$HOME/Developer/android-sdk/platform-tools:$HOME/Developer/android-sdk/tools"
+
+# anyenv
+if [ -d $HOME/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+    # tmux対応
+    for D in `\ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
 fi
-
-# phpenv
-export PATH="$PATH:~/.phpenv/bin"
-eval "$(phpenv init -)"
-
 # percol の設定
 # {{{
 # # cd 履歴を記録
