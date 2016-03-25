@@ -12,6 +12,7 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'aereal/vim-colors-japanesque'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/syntastic'
