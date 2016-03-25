@@ -64,8 +64,8 @@ function vcs_echo {
 DEFAULT='$'
 ERROR='%F{red}$%f'
 
-DEFAULT=$'( ・Θ・) ' # ふつうのにわとり 
-ERROR=$'( ；Θ；) ' # 泣くにわとり 
+DEFAULT=$'( ･Θ･) < ' # ふつうのにわとり 
+ERROR=$'( ;Θ;) <  ' # 泣くにわとり 
 
 PROMPT=$'
 %F{green}[%~]%f `vcs_echo`
