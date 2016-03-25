@@ -61,15 +61,7 @@ function vcs_echo {
 	echo "%{$color%}(%{$branch%})%{$reset_color%}" | sed -e s/@/"%F{yellow}@%f%{$color%}"/
 }
 
-DEFAULT='$'
-ERROR='%F{red}$%f'
-
-DEFAULT=$'( ･Θ･) < ' # ふつうのにわとり 
-ERROR=$'( ;Θ;) <  ' # 泣くにわとり 
-
-PROMPT=$'
-%F{green}[%~]%f `vcs_echo`
-%(?.${DEFAULT}.${ERROR}) '
+PROMPT="%(?.%F{green}( ･8･%) <%f.%F{blue}( ;8;%) <%f) "
 
 # memo
 function memo(){
