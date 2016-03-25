@@ -225,3 +225,4 @@ function do_enter() {
     return 0
 }
 zle -N do_enter
+bindkey '^M' do_enter
