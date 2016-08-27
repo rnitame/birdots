@@ -1,246 +1,293 @@
-# 色を使えるようにする
-autoload -Uz colors
-colors
-export CLICOLOR=1
-eval $(/usr/local/bin/gdircolors ~/Developer/dircolors-solarized/dircolors.ansi-light)
-export LSCOLORS=ExFxBxDxCxegedabagacad
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+cp /Users/Ardeidae/.vim/dein/repos/github.com/reedes/vim-colors-pencil/colors/pencil.vim ~/.vim/colors/pencil.vim
 
-# 文字コード
-export LANG=ja_JP.UTF-8
+# zplug
+## インストールチェック
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+fi
 
-# 自動補完を有効に
-autoload -U compinit; compinit
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-syntax-highlighting", \
+    nice:10
+zplug "zsh-users/zsh-completions"
+zplug "stedolan/jq", \
+    from:gh-r, \
+    as:command, \
+    rename-to:jq
+zplug "b4b4r07/emoji-cli", \
+    on:"stedolan/jq"
+zplug "b4b4r07/enhancd", \
+    use:init.sh
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:fzf
+zplug "junegunn/fzf", \
+    as:command, \
+    use:bin/fzf-tmux
 
-# 補完候補が複数あるときに自動的に一覧表示
-setopt auto_menu
+## インストールしてないプラグインがあればインストール
+if ! zplug check --verbose; then
+    printf "zplug plugin Install? [y/N] : "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-# ディレクトリ名だけ入力すれば、そのディレクトリに cd してくれる
-setopt auto_cd
+## プラグイン読み込み、コマンドパス追加
+zplug load --verbose
 
-# cd したら自動的に pushd，重複したディレクトリを追加しない
-setopt auto_pushd
-setopt pushd_ignore_dups
+###############
+# zsh Setting 
+###############
 
-# 日本語ファイル名を表示可能にする
-setopt print_eight_bit
+###############
+# ヒストリ関連
+###############
+# 履歴の保存先
+HISTFILE=$HOME/.zsh-history
+## メモリに展開する履歴の数
+# HISTSIZE=10000
+## 保存する履歴の数
+SAVEHIST=10000
 
-# 同時に起動した zsh 間でヒストリを共有
+## コマンドラインの先頭がスペースで始まる場合ヒストリに追加しない
+setopt hist_ignore_space
+## history (fc -l) コマンドをヒストリリストから取り除く。
+setopt hist_no_store
+## 直前と同じコマンドをヒストリに追加しない
+setopt hist_ignore_dups
+## ヒストリを呼び出してから実行する間に一旦編集
+setopt hist_verify
+## zsh の開始, 終了時刻をヒストリファイルに書き込む
+setopt extended_history
+## 余分な空白は詰めて記録
+setopt hist_reduce_blanks  
+## 古いコマンドと同じものは無視 
+setopt hist_save_no_dups
+## ヒストリに追加されるコマンド行が古いものと同じなら古いものを削除
+setopt hist_ignore_all_dups
+## 補完時にヒストリを自動的に展開         
+setopt hist_expand
+
+## Screenでのコマンド共有用
+## シェルを横断して.zshhistoryに記録
+setopt inc_append_history
+## ヒストリを共有
 setopt share_history
 
-# 入力したコマンドが既に履歴にある場合、履歴から古い方のコマンドを削除
-setopt hist_ignore_all_dups
+###################
+# ディレクトリ変更
+###################
+## ディレクトリ名だけで cd
+setopt auto_cd
+## cd 時に自動で push
+setopt auto_pushd
+## 同じディレクトリを pushd しない
+setopt pushd_ignore_dups
 
-# エイリアス
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ls='/usr/local/bin/gls --color=auto'
-alias ll='ls -al'
-alias mv='mv -i'
-alias cp='cp -i'
-alias brew="env PATH=${PATH/\/usr\/local\/\opt\/llvm\/bin:?/} brew"
+############
+# 補間関連
+############
+## 補完機能の有効
+autoload -U compinit
+compinit
+
+## TAB で順に補完候補を切り替える
+setopt auto_menu
+## サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt auto_resume
+## 補完候補を一覧表示
+setopt auto_list
+## カッコの対応などを自動的に補完
+setopt auto_param_keys
+## ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
+## 補完候補のカーソル選択を有効に
+zstyle ':completion:*:default' menu select=1
+## 補完候補の色づけ
+eval `dircolors`
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+## 補完候補一覧でファイルの種別をマーク表示
+setopt list_types
+## 補完候補を詰めて表示
+setopt list_packed
+
+#########
+# グロブ
+#########
+## 拡張グロブを使用
+## ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
+setopt extended_glob
+## =command を command のパス名に展開する
+setopt equals
+## --prefix=/usr などの = 以降も補完
+setopt magic_equal_subst
+## ファイル名の展開で辞書順ではなく数値的にソート
+setopt numeric_glob_sort
+
+##########
+# 入出力
+##########
+## 出力時8ビットを通す
+setopt print_eight_bit
+## スペルチェック。間違うと訂正してくれる
+setopt correct
+## PCRE 互換の正規表現を使う
+setopt re_match_pcre
+## 出力の文字列末尾に改行コードが無い場合でも表示
+unsetopt promptcr
+## {a-c} を a b c に展開する機能を使えるようにする
+setopt brace_ccl
+## Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
+setopt NO_flow_control
+## コマンドラインでも # 以降をコメントと見なす
+setopt interactive_comments
+## ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
+setopt mark_dirs
+## 最後のスラッシュを自動的に削除しない
+setopt noautoremoveslash
+
+##################
+# プロンプト関連
+##################
+# 色有効
+autoload -U colors
+colors
+
+## 色を使う
+setopt prompt_subst
 
 # プロンプト
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:git:*:-all-' command /usr/bin/git
 zstyle ':vcs_info:*' max-exports 6 # formatに入る変数の最大数
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%b@%r' '%c' '%u'
-zstyle ':vcs_info:git:*' actionformats '%b @ %r|%a' '%c' '%u'
+zstyle ':vcs_info:git:*' actionformats '%b@%r|%a' '%c' '%u'
 setopt prompt_subst
 function vcs_echo {
-	local st branch color
-	STY= LANG=en_US.UTF-8 vcs_info
-	st=`git status 2> /dev/null`
-	if [[ -z "$st" ]]; then return; fi
-	branch="$vcs_info_msg_0_"
-	if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]} #staged
-	elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]} #unstaged
-	elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]} # untracked
-	else color=${fg[cyan]}
-	fi
-	echo "%{$color%}(%{$branch%})%{$reset_color%}" | sed -e s/@/"%F{yellow}@%f%{$color%}"/
+    local st branch color
+    STY= LANG=en_US.UTF-8 vcs_info
+    st=`git status 2> /dev/null`
+    if [[ -z "$st" ]]; then return; fi
+        branch="$vcs_info_msg_0_"
+        if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]} #staged
+        elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]} #unstaged
+        elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]} # untracked
+    else color=${fg[cyan]}
+    fi
+    echo "%{$color%}(%{$branch%})%{$reset_color%}" | sed -e s/@/"%F{yellow}@%f%{$color%}"/
 }
 
-DEFAULT='$'
-ERROR='%F{red}$%f'
+PROMPT="
+`vcs_echo`
+%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) < !( ´;-;｀%)? < )%{${reset_color}%}"
 
-DEFAULT=$'\U1F34E \U1F414 ' # りんごとにわとり
-ERROR=$'\U1F34E \U1F363 ' # りんごとsushi 
+# プロンプト指定(コマンドの続き)
+PROMPT2='[%n]> '
 
-PROMPT=$'
-%F{green}[%~]%f `vcs_echo`
-%(?.${DEFAULT}.${ERROR}) '
+# もしかして時のプロンプト指定
+SPROMPT="%{$fg[red]%}%{$suggest%}( ･´ｰ･｀)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]: %{${reset_color}%}"
 
-# memo
-function memo(){
-  memotxt=''
-  for str in $@
-  do
-  memotxt="${memotxt} ${str}"
-  done
-}
-RPROMPT='${memotxt}'
+##############
+# ジョブ制御
+##############
+## 内部コマンド jobs の出力をデフォルトで jobs -l にする
+setopt long_list_jobs
 
-# もしかして
-setopt correct
-SPROMPT="%{$fg[blue]%}もしかして: %B%r%b ${reset_color} (y, n, a, e)-> "
+#################
+# その他・未分類
+#################
+## コアダンプサイズを制限
+# limit coredumpsize 102400
 
-
-# ビープ音を鳴らさない
+## ビープを鳴らさない
 setopt nobeep
-setopt no_list_beep
 
-# Homebrew's sbin
-export PATH="$PATH:/usr/local/sbin"
+#########
+# Alias 
+#########
+alias ls='ls -F --color=auto'
+alias ll='ls -ltr'
+alias la='ls -a'
+alias lal='ls -al'
+alias vi='vim'
+alias tmux="TERM=xterm-256color tmux -2"
 
-# Android SDK
-export PATH="$PATH:$HOME/Developer/android-sdk/platform-tools:$HOME/Developer/android-sdk/tools"
-
-# anyenv
-if [ -d $HOME/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
-    # tmux対応
-    for D in `\ls $HOME/.anyenv/envs`
-    do
-        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-fi
-# percol の設定
-# {{{
-# # cd 履歴を記録
-typeset -U chpwd_functions
-CD_HISTORY_FILE=${HOME}/.cd_history_file # cd 履歴の記録先ファイル
-function chpwd_record_history() {
-    echo $PWD >> ${CD_HISTORY_FILE}
-}
-chpwd_functions=($chpwd_functions chpwd_record_history)
-# percol を使って cd 履歴の中からディレクトリを選択
-# 過去の訪問回数が多いほど選択候補の上に来る
-function percol_get_destination_from_history() {
-    sort ${CD_HISTORY_FILE} | uniq -c | sort -r | \
-        sed -e 's/^[ ]*[0-9]*[ ]*//' | \
-        sed -e s"/^${HOME//\//\\/}/~/" | \
-        percol | xargs echo
-}
-
-# percol を使って cd 履歴の中からディレクトリを選択し cd するウィジェット
-function percol_cd_history() {
-    local destination=$(percol_get_destination_from_history)
-    [ -n $destination ] && cd ${destination/#\~/${HOME}}
-    zle reset-prompt
-}
-zle -N percol_cd_history
-
-# percol を使って cd 履歴の中からディレクトリを選択し，現在のカーソル位置に挿入するウィジェット
-function percol_insert_history() {
-    local destination=$(percol_get_destination_from_history)
-    if [ $? -eq 0 ]; then
-        local new_left="${LBUFFER} ${destination} "
-        BUFFER=${new_left}${RBUFFER}
-        CURSOR=${#new_left}
+## tmux の自動起動
+if [[ ! -n $TMUX && $- == *l* ]]; then
+    ID="`tmux list-sessions`"
+    if [[ -z "$ID" ]]; then
+        tmux new-session
     fi
-    zle reset-prompt
-}
-zle -N percol_insert_history
-# }}}
-
-# C-x ; でディレクトリに cd
-# C-x i でディレクトリを挿入
-bindkey '^x;' percol_cd_history
-bindkey '^xi' percol_insert_history
-
-# ls, cd, rm コマンドの履歴を保存しない
-zshaddhistory(){
-    local line=${1%%$'\n'}
-    local cmd=${line%% *}
-
-    [[ ${cmd} != (ls)
-    && ${cmd} != (cd)
-    && ${cmd} != (rm)
-    ]]
-}
-
-# cd したら ls して1個前のディレクトリとカレントディレクトリをタブタイトルにする
-function chpwd() { ls; echo -ne "\033]0;$(pwd | rev | awk -F \/ '{print "/"$1"/"$2}'| rev)\007"}
-chpwd
-
-# tmux と連携
-function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
-function is_osx() { [[ $OSTYPE == darwin* ]]; }
-function is_screen_running() { [ ! -z "$STY" ]; }
-function is_tmux_runnning() { [ ! -z "$TMUX" ]; }
-function is_screen_or_tmux_running() { is_screen_running || is_tmux_runnning; }
-function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
-function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
-
-function tmux_automatically_attach_session()
-{
-    if is_screen_or_tmux_running; then
-        ! is_exists 'tmux' && return 1
-
-        if is_tmux_runnning; then
-            echo "${fg_bold[red]} tmux launched!! :)  ${reset_color}"
-        elif is_screen_running; then
-            echo "This is on screen."
-        fi
+    create_new_session="Create New Session"
+    ID="$ID\n${create_new_session}:"
+    ID="`echo $ID | $PERCOL | cut -d: -f1`"
+    if [[ "$ID" = "${create_new_session}" ]]; then
+        tmux new-session
+    elif [[ -n "$ID" ]]; then
+        tmux attach-session -t "$ID"
     else
-        if shell_has_started_interactively && ! is_ssh_running; then
-            if ! is_exists 'tmux'; then
-                echo 'Error: tmux command not found' 2>&1
-                return 1
-            fi
+        :  # 通常通り起動 
+    fi
+fi
 
-            if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
-                # 存在するセッションを detach
-                tmux list-sessions
-                echo -n "Tmux: attach? (y/N/num) "
-                read
-                if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
-                    tmux attach-session
-                    if [ $? -eq 0 ]; then
-                        echo "$(tmux -V) attached session"
-                        return 0
-                    fi
-                elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
-                    tmux attach -t "$REPLY"
-                    if [ $? -eq 0 ]; then
-                        echo "$(tmux -V) attached session"
-                        return 0
-                    fi
-                fi
-            fi
-
-            if is_osx && is_exists 'reattach-to-user-namespace'; then
-                tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-                tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+## ファイルが多いディレクトリでlsしたとき短縮して表示
+ls_abbrev() {
+    if [[ ! -r $PWD ]]; then
+        return
+    fi
+    # -a : Do not ignore entries starting with ..
+    # -C : Force multi-column output.
+    # -F : Append indicator (one of */=>@|) to entries.
+    local cmd_ls='ls'
+    local -a opt_ls
+    opt_ls=('-aCF' '--color=always')
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            if type gls > /dev/null 2>&1; then
+                cmd_ls='gls'
             else
-                tmux new-session && echo "tmux created new session"
+                # -G : Enable colorized output.
+                opt_ls=('-aCFG')
             fi
-        fi
+            ;;
+    esac
+
+    local ls_result
+    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')
+
+    local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
+
+    if [ $ls_lines -gt 10 ]; then
+        echo "$ls_result" | head -n 5
+        echo '...'
+        echo "$ls_result" | tail -n 5
+        echo "$(command ls -1 -A | wc -l | tr -d ' ') files exist"
+    else
+        echo "$ls_result"
     fi
 }
-tmux_automatically_attach_session
 
-# 何も入力していない状態で Enter を押すと ls と git status
+## Enter を打った時にlsとgit statusを実行
 function do_enter() {
     if [ -n "$BUFFER" ]; then
         zle accept-line
         return 0
     fi
     echo
-    ls
-    # ↓おすすめ
-    # ls_abbrev
+    ls_abbrev
     if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
         echo
         echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb
+        git status 
     fi
     zle reset-prompt
     return 0
 }
 zle -N do_enter
-bindkey '^M' do_enter
+bindkey '^m' do_enter
+

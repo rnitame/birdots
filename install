@@ -1,52 +1,7 @@
 #!/bin/sh
 
-# Mac と Linux でインストールする内容を変える
-if [ `uname` = "Darwin" ]; then
-    ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
-    ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-
-    if [-z `which brew` ]; then
-        # Homebrew
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew update && brew upgrade && brew doctor
-    fi
-    brew tap Homebrew/bundle
-
-    cd ~/.dotfiles/MacOSX/
-    brew bundle
-
-    # iTerm2 のカラーテーマ
-    git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git ~/Developer/iTerm2-Color-Schemes
-
-    # Homebrew で入れた Git だと diff-highlight にパスが通っていないので通す
-    ln -sf /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin
-elif [ `uname` = "Linux" ]; then
-    ln -sf ~/.dotfiles/Linux/.zshrc_linux ~/.zshrc
-fi
-
-chsh -s /bin/zsh
-
-# NeoBundle インストール
-mkdir -p ~/.vim/bundle
-git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-git clone https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
-git clone https://github.com/Townk/vim-autoclose ~/.vim/bundle/vim-autoclose
-git clone https://github.com/scrooloose/syntastic ~/.vim/bundle/syntastic
-git clone https://github.com/plasticboy/vim-markdown ~/.vim/bundle/vim-markdown
-git clone https://github.com/kannokanno/previm ~/.vim/bundle/previm
-git clone https://github.com/tyru/open-browser.vim ~/.vim/bundle/open-browser.vim
-
-# Vim のテーマ
-mkdir -p ~/.vim/colors/
-git clone https://github.com/jonathanfilip/vim-lucius ~/vim-lucius
-mv ~/vim-lucius/colors/lucius.vim ~/.vim/colors
-rm -rf ~/vim-lucius
-vim +NeoBundleInstall +q
-
-# Zsh のカラーテーマ
-git clone https://github.com/seebi/dircolors-solarized ~/Developer/dircolors-solarized
-
-# シンボリックリンク
+ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.gitignore ~/.gitignore
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig

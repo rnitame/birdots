@@ -1,36 +1,97 @@
-set nocompatible
-set encoding=utf-8
-set ambiwidth=double
-colorscheme lucius
+" dein.vim 
+if &compatible
+    set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-" NeoBundle の設定
-if has('vim_starting')
-    filetype plugin off
-    filetype indent off
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+call dein#begin(expand('~/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('NLKNguyen/papercolor-theme')
+call dein#add('rhysd/github-complete.vim')
+call dein#add('reedes/vim-colors-pencil')
+call dein#add('itchyny/lightline.vim')
+
+call dein#end()
+call dein#save_state()
+
+if dein#check_install()
+    call dein#install()
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'aereal/vim-colors-japanesque'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-call neobundle#end()
+set encoding=utf-8
+set ambiwidth=double
 
-syntax on
+syntax enable
 filetype plugin on
 filetype indent on
-NeoBundleCheck
+set background=light
+colorscheme pencil
+let g:lightline = {
+    \ 'colorscheme': 'PaperColor',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+    \ }
+    \ }
 
+" Vim標準のファイラ置き換え 
+let g:vimfiler_as_default_explorer = 1
+" Vim 開いたら VimFiler 開く(拡張子判定か何か入れたい)
+autocmd VimEnter * VimFilerExplorer
+" github-complete
+let g:github_complete_emoji_japanese_workaround = 1
 " Vim で markdown のプレビュー
 au BufRead,BufNewFile *.md set filetype=markdown
+" neocomplete
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" SSH クライアントの設定によってはマウスが使える（putty だと最初からいける）
-set mouse=n
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>" 
+
 
 " 画面表示の設定
 set number         " 行番号を表示する
@@ -81,18 +142,15 @@ set expandtab     " タブ入力を複数の空白入力に置き換える
 set tabstop=4     " 画面上でタブ文字が占める幅
 set shiftwidth=4  " 自動インデントでずれる幅
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent    " 改行時に前の行のインデントを継続する
-set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set autoindent
+set smartindent
 
 " 動作環境との統合関連の設定
 
 " OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
 set clipboard=unnamed,unnamedplus
-" マウスの入力を受け付ける
-set mouse=a
 " Windows でもパスの区切り文字を / にする
 set shellslash
-
 
 " コマンドラインの設定
 
@@ -107,7 +165,7 @@ set history=10000
 set visualbell t_vb=
 set noerrorbells
 
-" 自動的にコメント文字列を挿入しない
+" 自動的にコメント行を挿入しない
 augroup auto_comment_off
     autocmd!
     autocmd BufEnter * setlocal formatoptions-=r
