@@ -1,0 +1,25 @@
+[user]
+    name = Ryo Nitami
+    email = nitry.n2t1m1@rnita.me
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+    compression = 0
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+[push]
+    default = tracking
+[pager]
+    # diff をきれいに表示する
+    log = diff-highlight | LESS=-R less
+    show = diff-highlight | LESS=-R less
+    diff = diff-highlight | LESS=-R less
+[merge]
+    tool = vimdiff
+[mergetool]
+    keepBackup = false
+[commit]
+    template = ~/.gitmessage.txt
