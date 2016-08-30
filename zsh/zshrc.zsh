@@ -178,7 +178,7 @@ if (( $+functions[git_super_status] )); then
 fi
 
 PROMPT+="
-%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) <!( ´;-;｀%)? <) %{${reset_color}%} "
+%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) <!( ´;-;｀%)? <)%{${reset_color}%} "
 
 
 # プロンプト指定(コマンドの続き)
