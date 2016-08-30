@@ -1,5 +1,6 @@
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-cp /Users/Ardeidae/.vim/dein/repos/github.com/reedes/vim-colors-pencil/colors/pencil.vim ~/.vim/colors/pencil.vim
+mkdir -p ~/.vim/colors
+cp ~/.vim/dein/repos/github.com/reedes/vim-colors-pencil/colors/pencil.vim ~/.vim/colors/pencil.vim
 
 # zplug
 ## インストールチェック
@@ -26,6 +27,8 @@ zplug "junegunn/fzf-bin", \
 zplug "junegunn/fzf", \
     as:command, \
     use:bin/fzf-tmux
+zplug "olivierverdier/zsh-git-prompt", \
+    use:zshrc.sh
 
 ## インストールしてないプラグインがあればインストール
 if ! zplug check --verbose; then
@@ -157,34 +160,26 @@ setopt noautoremoveslash
 autoload -U colors
 colors
 
-## 色を使う
-setopt prompt_subst
-
 # プロンプト
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:*' max-exports 6 # formatに入る変数の最大数
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%b@%r' '%c' '%u'
-zstyle ':vcs_info:git:*' actionformats '%b@%r|%a' '%c' '%u'
+zstyle ':completion:*' special-dirs true
 setopt prompt_subst
-function vcs_echo {
-    local st branch color
-    STY= LANG=en_US.UTF-8 vcs_info
-    st=`git status 2> /dev/null`
-    if [[ -z "$st" ]]; then return; fi
-        branch="$vcs_info_msg_0_"
-        if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]} #staged
-        elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]} #unstaged
-        elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]} # untracked
-    else color=${fg[cyan]}
-    fi
-    echo "%{$color%}(%{$branch%})%{$reset_color%}" | sed -e s/@/"%F{yellow}@%f%{$color%}"/
-}
 
-PROMPT="
-`vcs_echo`
-%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) < !( ´;-;｀%)? < )%{${reset_color}%}"
+if (( $+functions[git_super_status] )); then
+    ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}%{● %}"
+    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖ %}"
+    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{✚ %}"
+    ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%}"
+    ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%}"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%}"
+    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔ %}"
+    PROMPT='$(git_super_status)'
+fi
+
+PROMPT+="
+%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) <!( ´;-;｀%)? <) %{${reset_color}%} "
+
 
 # プロンプト指定(コマンドの続き)
 PROMPT2='[%n]> '
