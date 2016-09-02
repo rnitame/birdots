@@ -22,4 +22,4 @@
 [mergetool]
     keepBackup = false
 [commit]
-    template = ~/.gitmessage.txt
+    template = ~/.gitmessage
