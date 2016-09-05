@@ -50,6 +50,8 @@ let g:lightline = {
     \ }
     \ }
 
+" VimFiler でファイルのCRUDを可能にする（セーフモードいじる）
+let g:vimfiler_safe_mode_by_default = 0
 " Vim標準のファイラ置き換え 
 let g:vimfiler_as_default_explorer = 1
 " Vim 開いたら VimFiler 開く(拡張子判定か何か入れたい)
