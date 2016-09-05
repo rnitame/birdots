@@ -23,3 +23,31 @@
     keepBackup = false
 [commit]
     template = ~/.gitmessage
+[alias]
+    # git の alias 一覧
+    alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+    # pretty な git log
+    pl = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+    # ローカルの変更維持しつつ pull する
+    drag = pull --rebase
+    # ローカルとリモートのブランチ同期
+    refresh = !git fetch origin && git remote prune origin
+    # 全ての変更をステージにあげる
+    aa = !git add .  && git add -u && git status
+    # コミットメッセージ変更
+    cam = commit --amend
+    # wip
+    wip = commit --allow-empty -m "wip"
+    # 今日もよくがんばりました
+    today  = "!git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\""
+
+
+    # コマンド短縮形
+    co = checkout
+    br = branch
+    pom = push origin master
+    l = log
+    st = status
+    ci = commit
+    cl = clone
+

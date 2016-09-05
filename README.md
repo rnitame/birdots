@@ -15,11 +15,8 @@ Install file list
   - .vimrc
 
 ## Screenshots
-### Mac
+### zsh 
 ![](screenshots/screenshot_mac.png)
-
-### Linux
-TBD
 
 ### COMMIT_EDITMSG
 ![](screenshots/commit_editmsg.png)
