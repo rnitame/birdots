@@ -18,6 +18,7 @@ call dein#add('NLKNguyen/papercolor-theme')
 call dein#add('rhysd/github-complete.vim')
 call dein#add('reedes/vim-colors-pencil')
 call dein#add('itchyny/lightline.vim')
+call dein#add('airblade/vim-gitgutter')
 
 call dein#end()
 call dein#save_state()
@@ -75,6 +76,8 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" vim-gitgutter の記号が反映されるまでの時間
+set updatetime=250
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
