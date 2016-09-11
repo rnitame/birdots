@@ -1,8 +1,13 @@
 #!/bin/sh
 
-ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-ln -sf ~/.dotfiles/.vimrc ~/.vimrc
-ln -sf ~/.dotfiles/.gitignore ~/.gitignore
-ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/.gitmessage.txt ~/.gitmessage.txt
+# install necessary software
+sudo pip install diff-highlight mycli
+
+# copy some dotfiles
+cp ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+cp ~/.dotfiles/zsh/zshrc.zsh ~/.zshrc
+cp ~/.dotfiles/vim/vimrc ~/.vimrc
+cp ~/.dotfiles/gitfile/gitignore ~/.gitignore
+cp ~/.dotfiles/gitfile/gitconfig ~/.gitconfig
+cp ~/.dotfiles/gitfile/gitmessage ~/.gitmessage
+
