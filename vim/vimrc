@@ -19,6 +19,7 @@ call dein#add('rhysd/github-complete.vim')
 call dein#add('reedes/vim-colors-pencil')
 call dein#add('itchyny/lightline.vim')
 call dein#add('airblade/vim-gitgutter')
+call dein#add('junegunn/vim-emoji')
 
 call dein#end()
 call dein#save_state()
@@ -51,6 +52,8 @@ let g:lightline = {
     \ }
     \ }
 
+" vim-emoji completion
+set completefunc=emoji#complete
 " VimFiler でファイルのCRUDを可能にする（セーフモードいじる）
 let g:vimfiler_safe_mode_by_default = 0
 " Vim標準のファイラ置き換え 
