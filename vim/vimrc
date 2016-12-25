@@ -24,6 +24,8 @@ call dein#add('fatih/vim-go')
 call dein#add('tpope/vim-markdown')
 call dein#add('leshill/vim-json')
 call dein#add('pangloss/vim-javascript')
+call dein#add('mxw/vim-jsx')
+call dein#add('leafgarland/typescript-vim')
 
 call dein#end()
 call dein#save_state()
@@ -103,6 +105,9 @@ let g:go_highlight_build_constraints = 1
 
 " for vim-javascript
 let g:javascript_plugin_jsdoc = 1
+
+" for typescript-vim
+au BufRead,BufNewFile *.ts setfiletype typescript
 
 " vim-gitgutter 
 " 記号が反映されるまでの時間
