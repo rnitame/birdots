@@ -5,6 +5,7 @@ Install file list
 
 - tmux
   - .tmux.conf
+  - .tmux.conf.osx
 - git
   - .gitconfig
   - .gitignore
@@ -14,13 +15,6 @@ Install file list
 - vim
   - .vimrc
 
-## Screenshots
-### zsh 
-![](screenshots/screenshot_mac.png)
-
-### COMMIT_EDITMSG
-![](screenshots/commit_editmsg.png)
-
 ## Requirement
 
 - Vim 7.4 (+ lua)
@@ -29,13 +23,12 @@ Install file list
 - git
 
 ## Install
-TBD
 
-## Update
-TBD
-
-## Uninstall
-TBD
+```
+$ git clone git@github.com:rnitame/birdots.git
+$ cd birdots
+$ ./land.sh
+```
 
 # Author
 [rnitame](https://github.com/rnitame)
