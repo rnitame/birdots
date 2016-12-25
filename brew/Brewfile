@@ -4,7 +4,6 @@ tap caskroom/fonts
 tap homebrew/dupes
 tap homebrew/python
 tap homebrew/science
-tap josegonzalez/php
 tap phinze/cask
 tap tldr-pages/tldr
 
@@ -15,7 +14,7 @@ brew 'curl'
 brew 'freetype'
 brew 'gibo'
 brew 'git'
-brew 'go'
+brew 'highlight'
 brew 'libevent'
 brew 'libpng'
 brew 'libtiff'
@@ -27,12 +26,11 @@ brew 'openssl'
 brew 'pidcat'
 brew 'readline'
 brew 'reattach-to-user-namespace'
-brew 'sqlite'
-brew 'sqlitebrowser'
 brew 'tldr'
 brew 'tmux'
 brew 'tree'
 brew 'vim' args: ['with-lua']
 brew 'xz'
+brew 'zsh'
 
 clean
