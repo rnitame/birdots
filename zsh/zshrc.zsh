@@ -269,6 +269,8 @@ ls_abbrev() {
 
 ## Enter を打った時にlsとgit statusを実行
 function do_enter() {
+    ## 毎回 hub を呼ばないようにする
+    local git==git
     if [ -n "$BUFFER" ]; then
         zle accept-line
         return 0
@@ -286,3 +288,5 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
+## for hub command
+function git(){hub "$@"}
