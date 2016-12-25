@@ -1,3 +1,9 @@
+# for vim-go
+eval "$(hub alias -s)"
+
+# 毎回 hub を呼ばないようにする
+local git==git
+
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 mkdir -p ~/.vim/colors
 cp ~/.vim/dein/repos/github.com/reedes/vim-colors-pencil/colors/pencil.vim ~/.vim/colors/pencil.vim
@@ -269,8 +275,6 @@ ls_abbrev() {
 
 ## Enter を打った時にlsとgit statusを実行
 function do_enter() {
-    ## 毎回 hub を呼ばないようにする
-    local git==git
     if [ -n "$BUFFER" ]; then
         zle accept-line
         return 0
@@ -288,5 +292,8 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
-## for hub command
-function git(){hub "$@"}
+
+## for golang
+export GOPATH=~/golang
+export GOROOT=$(go env GOROOT)
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

@@ -20,6 +20,7 @@ call dein#add('reedes/vim-colors-pencil')
 call dein#add('itchyny/lightline.vim')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('junegunn/vim-emoji')
+call dein#add('fatih/vim-go')
 
 call dein#end()
 call dein#save_state()
@@ -87,6 +88,10 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" for vim-go
+let g:go_fmt_command = 'goimports'
+
 " vim-gitgutter 
 " 記号が反映されるまでの時間
 set updatetime=250

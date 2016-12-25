@@ -25,15 +25,13 @@
     template = ~/.gitmessage
 [alias]
     # git の alias 一覧
-    alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+    ali = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
     # pretty な git log
     pl = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
     # ローカルの変更維持しつつ pull する
     drag = pull --rebase
     # ローカルとリモートのブランチ同期
     refresh = !git fetch origin && git remote prune origin
-    # 変更されたファイル一覧と行数
-    diff = diff --stat
     # 全ての変更をステージにあげる
     aa = !git add .  && git add -u && git status
     # コミットメッセージ変更
