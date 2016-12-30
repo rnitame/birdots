@@ -16,7 +16,7 @@ fi
 
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", \
-    nice:10
+    defer:10
 zplug "zsh-users/zsh-completions"
 zplug "stedolan/jq", \
     from:gh-r, \
