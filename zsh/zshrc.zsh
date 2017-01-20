@@ -292,8 +292,13 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
-
 ## for golang
 export GOPATH=~/golang
 export GOROOT=$(go env GOROOT)
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+## for Linuxbrew
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
