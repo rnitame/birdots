@@ -14,6 +14,8 @@ Install file list
   - .zshrc
 - vim
   - .vimrc
+- (Home | Linux)brew
+  - brewfile
 
 ## Requirement
 
@@ -21,6 +23,7 @@ Install file list
 - Zsh 5.2
 - tmux 2.2
 - git
+- (Home | Linux)brew
 
 ## Install
 
