@@ -63,9 +63,3 @@ $RECYCLE.BIN/
 ### https://raw.github.com/github/gitignore//Global/VisualStudioCode.gitignore
 
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-
