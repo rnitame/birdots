@@ -34,6 +34,7 @@ call dein#add('leshill/vim-json')
 call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('leafgarland/typescript-vim')
+call dein#add('cocopon/vaffle.vim')
 
 call dein#end()
 call dein#save_state()
