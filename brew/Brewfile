@@ -5,6 +5,7 @@ tap 'phinze/cask'
 tap 'tldr-pages/tldr'
 
 cask 'font-source-han-code-jp'
+cask 'vagrant'
 
 brew 'coreutils'
 brew 'curl'
