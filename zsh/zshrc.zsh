@@ -1,3 +1,6 @@
+# for diff-highlight
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
+
 # OS ごとの処理
 case ${OSTYPE} in
     darwin*)
