@@ -1,11 +1,8 @@
-upgrade
-
-tap caskroom/fonts
-tap homebrew/dupes
-tap homebrew/python
-tap homebrew/science
-tap phinze/cask
-tap tldr-pages/tldr
+tap 'caskroom/fonts'
+tap 'homebrew/dupes'
+tap 'homebrew/science'
+tap 'phinze/cask'
+tap 'tldr-pages/tldr'
 
 cask 'font-source-han-code-jp'
 
@@ -30,9 +27,7 @@ brew 'reattach-to-user-namespace'
 brew 'tldr'
 brew 'tmux'
 brew 'tree'
-brew 'vim' args: ['with-lua']
+brew 'vim', args: ['with-lua', 'with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
 brew 'carthage'
-
-clean
