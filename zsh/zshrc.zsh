@@ -216,7 +216,7 @@ setopt nobeep
 #########
 # Alias 
 #########
-alias ls='ls -F --color=auto'
+alias ls='ls -G'
 alias ll='ls -ltr'
 alias la='ls -a'
 alias lal='ls -al'
@@ -307,3 +307,5 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+
+export PATH="/usr/local/bin:$PATH"
