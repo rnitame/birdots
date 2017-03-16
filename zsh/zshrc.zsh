@@ -20,8 +20,9 @@ if [[ ! -d ~/.zplug ]]; then
 fi
 
 source ~/.zplug/init.zsh
+# defer must be 3 or less
 zplug "zsh-users/zsh-syntax-highlighting", \
-    defer:10
+    defer:2
 zplug "zsh-users/zsh-completions"
 zplug "stedolan/jq", \
     from:gh-r, \
