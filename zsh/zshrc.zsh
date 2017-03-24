@@ -181,7 +181,7 @@ if (( $+functions[git_super_status] )); then
     ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
     ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}%{● %}"
     ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖ %}"
-    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[blue]%}%{✚ %}"
+    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[yellow]%}%{✚ %}"
     ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%}"
     ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%}"
     ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%}"
@@ -190,7 +190,7 @@ if (( $+functions[git_super_status] )); then
 fi
 
 PROMPT+="
-%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!( ´-｀) <!( ´;-;｀%)? <)%{${reset_color}%} "
+%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[yellow]%})%(?!( ´-｀) <!( ´;-;｀%)? <)%{${reset_color}%} "
 
 
 # プロンプト指定(コマンドの続き)

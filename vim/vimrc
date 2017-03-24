@@ -116,7 +116,7 @@ au BufRead,BufNewFile *.ts setfiletype typescript
 " 記号が反映されるまでの時間
 set updatetime=250
 " 記号の色変更
-highlight GitGutterAdd ctermfg=blue
+highlight GitGutterAdd ctermfg=lightblue
 highlight GitGutterChange ctermfg=brown
 highlight GitGutterDelete ctermfg=red
 
