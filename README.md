@@ -16,6 +16,7 @@ Install file list
   - .vimrc
 - (Home | Linux)brew
   - brewfile
+  - brewfile4linux
 
 ## Requirement
 
