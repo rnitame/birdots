@@ -10,6 +10,9 @@ case ${OSTYPE} in
     ;;
 esac
 
+# 開発系のものを置く場所
+mkdir -p ~/Developer
+
 mkdir -p ~/.vim/colors
 cp ~/.vim/dein/repos/github.com/reedes/vim-colors-pencil/colors/pencil.vim ~/.vim/colors/pencil.vim
 
@@ -299,7 +302,7 @@ zle -N do_enter
 bindkey '^m' do_enter
 
 ## for golang
-export GOPATH=~/golang
+export GOPATH=~/Developer/golang
 export GOROOT=$(go env GOROOT)
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
