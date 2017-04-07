@@ -226,6 +226,7 @@ alias la='ls -a'
 alias lal='ls -al'
 alias vi='vim'
 alias tmux="TERM=xterm-256color tmux -2"
+alias nyarn='yarn'
 
 ## tmux の自動起動
 if [[ ! -n $TMUX && $- == *l* ]]; then
