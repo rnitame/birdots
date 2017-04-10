@@ -3,12 +3,14 @@ tap 'homebrew/dupes'
 tap 'homebrew/science'
 tap 'phinze/cask'
 tap 'tldr-pages/tldr'
+tap 'facebook/fb'
 
 cask 'font-source-han-code-jp'
 cask 'vagrant'
 
 brew 'coreutils'
 brew 'curl'
+brew 'fbsimctl', args: ['HEAD']
 brew 'freetype'
 brew 'gibo'
 brew 'git'
