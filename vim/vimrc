@@ -105,6 +105,8 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+" ref) http://pocke.hatenablog.com/entry/2017/03/31/155345
+let g:go_gocode_unimported_packages = 1
 
 " for vim-javascript
 let g:javascript_plugin_jsdoc = 1
