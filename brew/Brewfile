@@ -35,3 +35,4 @@ brew 'vim', args: ['with-lua', 'with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
 brew 'carthage'
+brew 'mergepbx'
