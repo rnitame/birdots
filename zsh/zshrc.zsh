@@ -202,6 +202,15 @@ PROMPT2='[%n]> '
 # もしかして時のプロンプト指定
 SPROMPT="%{$fg[red]%}%{$suggest%}( ･´ｰ･｀)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]: %{${reset_color}%}"
 
+# tmux のタブ名をリポジトリ名に
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' formats '%r'
+
+precmd () {
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n ${vcs_info_msg_0_} ]] && tmux rename-window $vcs_info_msg_0_
+}
+
 ##############
 # ジョブ制御
 ##############
