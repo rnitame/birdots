@@ -49,4 +49,5 @@
     st = status
     ci = commit
     cl = clone
+    review = "!sh -c 'git fetch && git checkout $1' -"
 
