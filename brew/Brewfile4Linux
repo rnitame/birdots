@@ -3,7 +3,6 @@ tap 'homebrew/science'
 tap 'phinze/cask'
 tap 'tldr-pages/tldr'
 
-brew 'curl'
 brew 'freetype'
 brew 'gibo'
 brew 'git'
