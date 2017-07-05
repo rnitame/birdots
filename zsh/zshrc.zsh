@@ -5,7 +5,7 @@ export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 case ${OSTYPE} in
     darwin*)
         export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-        export ANDROID_HOME=$HOME/Developer/android-sdk
+        export ANDROID_HOME=$HOME/Library/Android/sdk
         export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
     ;;
 esac
