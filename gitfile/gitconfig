@@ -1,6 +1,6 @@
 [user]
     name = Ryo Nitami
-    email = nitry.n2t1m1@gmail.com
+    email = nitry.n2t1m1+github@gmail.com
 [core]
     editor = vim
     excludesfile = ~/.gitignore
