@@ -31,7 +31,7 @@ brew 'reattach-to-user-namespace'
 brew 'tldr'
 brew 'tmux'
 brew 'tree'
-brew 'vim', args: ['with-lua', 'with-luajit', 'with-python3']
+brew 'vim', args: ['with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
 brew 'carthage'
