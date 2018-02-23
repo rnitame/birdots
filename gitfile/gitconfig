@@ -16,7 +16,7 @@
     # diff をきれいに表示する
     log = diff-highlight | LESS=-R less
     show = diff-highlight | LESS=-R less
-    diff = diff-highlight | LESS=-R less
+    diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [merge]
     tool = vimdiff
 [mergetool]
