@@ -6,7 +6,6 @@ tap 'tldr-pages/tldr'
 tap 'facebook/fb'
 
 cask 'font-source-han-code-jp'
-cask 'vagrant'
 
 brew 'coreutils'
 brew 'freetype'
@@ -35,5 +34,5 @@ brew 'vim', args: ['with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
 brew 'carthage'
-brew 'mergepbx'
 brew 'httpie'
+brew 'diff-so-fancy'
