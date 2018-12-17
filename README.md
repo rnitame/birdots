@@ -3,9 +3,6 @@
 ## Description
 Install file list
 
-- tmux
-  - .tmux.conf
-  - .tmux.conf.osx
 - git
   - .gitconfig
   - .gitignore
@@ -17,12 +14,13 @@ Install file list
 - (Home | Linux)brew
   - brewfile
   - brewfile4linux
+- hyper.is 
+  - .hyper.js
 
 ## Requirement
 
 - Vim 7.4 (+ lua)
 - Zsh 5.2
-- tmux 2.2
 - git
 - (Home | Linux)brew
 
