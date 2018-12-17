@@ -179,36 +179,14 @@ autoload -Uz vcs_info
 zstyle ':completion:*' special-dirs true
 setopt prompt_subst
 
-if (( $+functions[git_super_status] )); then
-    ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-    ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}%{● %}"
-    ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖ %}"
-    ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[yellow]%}%{✚ %}"
-    ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%}"
-    ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%}"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%}"
-    ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔ %}"
-    PROMPT='$(git_super_status)'
-fi
-
 PROMPT+="
 %F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[yellow]%})%(?!( ´-｀) <!( ´;-;｀%)? <)%{${reset_color}%} "
-
 
 # プロンプト指定(コマンドの続き)
 PROMPT2='[%n]> '
 
 # もしかして時のプロンプト指定
 SPROMPT="%{$fg[red]%}%{$suggest%}( ･´ｰ･｀)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]: %{${reset_color}%}"
-
-# tmux のタブ名をリポジトリ名に
-zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:*' formats '%r'
-
-precmd () {
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n ${vcs_info_msg_0_} ]] && tmux rename-window $vcs_info_msg_0_
-}
 
 ##############
 # ジョブ制御
@@ -233,26 +211,7 @@ alias ll='ls -ltr'
 alias la='ls -a'
 alias lal='ls -al'
 alias vi='vim'
-alias tmux="TERM=xterm-256color tmux -2"
 alias nyarn='yarn'
-
-## tmux の自動起動
-if [[ ! -n $TMUX && $- == *l* ]]; then
-    ID="`tmux list-sessions`"
-    if [[ -z "$ID" ]]; then
-        tmux new-session
-    fi
-    create_new_session="Create New Session"
-    ID="$ID\n${create_new_session}:"
-    ID="`echo $ID | $PERCOL | cut -d: -f1`"
-    if [[ "$ID" = "${create_new_session}" ]]; then
-        tmux new-session
-    elif [[ -n "$ID" ]]; then
-        tmux attach-session -t "$ID"
-    else
-        :  # 通常通り起動 
-    fi
-fi
 
 ## ファイルが多いディレクトリでlsしたとき短縮して表示
 ls_abbrev() {
