@@ -28,7 +28,6 @@ brew 'pidcat'
 brew 'readline'
 brew 'reattach-to-user-namespace'
 brew 'tldr'
-brew 'tmux'
 brew 'tree'
 brew 'vim', args: ['with-luajit', 'with-python3']
 brew 'xz'

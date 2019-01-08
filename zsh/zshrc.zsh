@@ -25,24 +25,17 @@ fi
 source ~/.zplug/init.zsh
 # defer must be 3 or less
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
 zplug "stedolan/jq", \
     from:gh-r, \
     as:command, \
     rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
 zplug "b4b4r07/enhancd", \
     use:init.sh
-zplug "junegunn/fzf-bin", \
-    as:command, \
-    from:gh-r, \
-    rename-to:fzf
-zplug "junegunn/fzf", \
-    as:command, \
-    use:bin/fzf-tmux
-zplug "olivierverdier/zsh-git-prompt", \
-    use:zshrc.sh
+zplug "denysdovhan/spaceship-prompt", \
+    use:spaceship.zsh, \
+    from:github, \
+    as:theme
+zplug "zsh-users/zsh-autosuggestions"
 
 ## インストールしてないプラグインがあればインストール
 if ! zplug check --verbose; then
@@ -174,20 +167,6 @@ setopt noautoremoveslash
 autoload -U colors
 colors
 
-# プロンプト
-autoload -Uz vcs_info
-zstyle ':completion:*' special-dirs true
-setopt prompt_subst
-
-PROMPT+="
-%F{cyan}[%~]%f%(?.%{$fg[green]%}.%{$fg[yellow]%})%(?!( ´-｀) <!( ´;-;｀%)? <)%{${reset_color}%} "
-
-# プロンプト指定(コマンドの続き)
-PROMPT2='[%n]> '
-
-# もしかして時のプロンプト指定
-SPROMPT="%{$fg[red]%}%{$suggest%}( ･´ｰ･｀)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]: %{${reset_color}%}"
-
 ##############
 # ジョブ制御
 ##############
@@ -203,81 +182,30 @@ setopt long_list_jobs
 ## ビープを鳴らさない
 setopt nobeep
 
-#########
-# Alias 
-#########
-alias ls='ls --color=auto'
-alias ll='ls -ltr'
-alias la='ls -a'
-alias lal='ls -al'
-alias vi='vim'
-alias nyarn='yarn'
+SPACESHIP_PROMPT_ORDER=(
+dir git line_sep
+char
+)
 
-## ファイルが多いディレクトリでlsしたとき短縮して表示
-ls_abbrev() {
-    if [[ ! -r $PWD ]]; then
-        return
-    fi
-    # -a : Do not ignore entries starting with ..
-    # -C : Force multi-column output.
-    # -F : Append indicator (one of */=>@|) to entries.
-    local cmd_ls='ls'
-    local -a opt_ls
-    opt_ls=('-aCF' '--color=always')
-    case "${OSTYPE}" in
-        freebsd*|darwin*)
-            if type gls > /dev/null 2>&1; then
-                cmd_ls='gls'
-            else
-                # -G : Enable colorized output.
-                opt_ls=('-aCFG')
-            fi
-            ;;
-    esac
+# https://qiita.com/shidash/items/ca60307a1341086b6e44
+# Override auto-title when static titles are desired ($ title My new title)
+title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
+# Turn off static titles ($ autotitle)
+autotitle() { export TITLE_OVERRIDDEN=0 }; autotitle
+# Condition checking if title is overridden
+overridden() { [[ $TITLE_OVERRIDDEN == 1 ]]; }
+# Echo asterisk if git state is dirty
+gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clean"|"") ]] && echo "*" }
 
-    local ls_result
-    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')
-
-    local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
-
-    if [ $ls_lines -gt 10 ]; then
-        echo "$ls_result" | head -n 5
-        echo '...'
-        echo "$ls_result" | tail -n 5
-        echo "$(command ls -1 -A | wc -l | tr -d ' ') files exist"
-    else
-        echo "$ls_result"
-    fi
+# Show cwd when shell prompts for input.
+precmd() {
+   if overridden; then return; fi
+   cwd=${$(pwd)##*/} # Extract current working dir only
+   print -Pn "\e]0;$cwd$(gitDirty)\a" # Replace with $pwd to show full path
 }
 
-## Enter を打った時にlsとgit statusを実行
-function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    ls_abbrev
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status 
-    fi
-    zle reset-prompt
-    return 0
+# Prepend command (w/o arguments) to cwd while waiting for command to complete.
+preexec() {
+   if overridden; then return; fi
+   printf "\033]0;%s\a" "${1%% *} | $cwd$(gitDirty)" # Omit construct from $1 to show args
 }
-zle -N do_enter
-bindkey '^m' do_enter
-
-## for golang
-export GOPATH=~/Developer/golang
-export GOROOT=$(go env GOROOT)
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
-## for Linuxbrew
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
-
-export PATH="/usr/local/bin:$PATH"

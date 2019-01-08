@@ -11,10 +11,9 @@ Install file list
   - .zshrc
 - vim
   - .vimrc
-- (Home | Linux)brew
+- Homebrew
   - brewfile
-  - brewfile4linux
-- hyper.is 
+- hyper
   - .hyper.js
 
 ## Requirement
@@ -22,7 +21,7 @@ Install file list
 - Vim 7.4 (+ lua)
 - Zsh 5.2
 - git
-- (Home | Linux)brew
+- Homebrew
 
 ## Install
 

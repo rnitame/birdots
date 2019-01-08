@@ -1,10 +1,7 @@
 module.exports = {
   config: {
-    fontSize: 14,
-    fontFamily: '"Source Han Code JP"',
-    pokemon: ['Poliwhirl'],
-    unibody: 'true',
-    poketab: 'true',
+    fontSize: 15,
+    fontFamily: 'Noto Mono for Powerline, Menlo, monospace',
     opacity: 0.9,
     summon: {
       hideDock: true,
@@ -13,12 +10,13 @@ module.exports = {
     },
   },  
   plugins: [
-    'hyper-statusline',
+    'hyper-dracula',
     'hyper-tab-icons-plus',
-    'hyper-pokemon',
-    'hyper-search',
     'hyper-opacity',
     'hyperlinks',
     'hyperterm-summon'
+  ],
+  localPlugins:[
+    'hyper-statusline'
   ]
 };
