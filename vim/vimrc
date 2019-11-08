@@ -28,14 +28,8 @@ call dein#add('reedes/vim-colors-pencil')
 call dein#add('itchyny/lightline.vim')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('junegunn/vim-emoji')
-call dein#add('fatih/vim-go')
 call dein#add('tpope/vim-markdown')
-call dein#add('leshill/vim-json')
-call dein#add('pangloss/vim-javascript')
-call dein#add('mxw/vim-jsx')
-call dein#add('leafgarland/typescript-vim')
 call dein#add('cocopon/vaffle.vim')
-call dein#add('koron/codic-vim')
 
 call dein#end()
 call dein#save_state()
@@ -50,13 +44,6 @@ set ambiwidth=double
 syntax enable
 filetype plugin on
 filetype indent on
-autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
-autocmd FileType js setlocal sw=2 sts=2 ts=2 et
-autocmd FileType php setlocal sw=4 sts=4 ts=4 et
-autocmd FileType java setlocal sw=4 sts=4 ts=4 et
-autocmd FileType go setlocal sw=8 sts=8 ts=8
-autocmd FileType css setlocal sw=2 sts=2 ts=2 et
-autocmd FileType scss setlocal sw=2 sts=2 ts=2 et
 
 set background=dark
 colorscheme pencil
@@ -80,8 +67,6 @@ let g:lightline = {
 set completefunc=emoji#complete
 " github-complete
 let g:github_complete_emoji_japanese_workaround = 1
-" Vim で markdown のプレビュー
-au BufRead,BufNewFile *.md set filetype=markdown
 " neocomplete
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -97,23 +82,6 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" for vim-go
-let g:go_fmt_command = 'goimports'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-" ref) http://pocke.hatenablog.com/entry/2017/03/31/155345
-let g:go_gocode_unimported_packages = 1
-
-" for vim-javascript
-let g:javascript_plugin_jsdoc = 1
-
-" for typescript-vim
-au BufRead,BufNewFile *.ts setfiletype typescript
 
 " vim-gitgutter 
 " 記号が反映されるまでの時間

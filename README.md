@@ -5,7 +5,6 @@ Install file list
 
 - git
   - .gitconfig
-  - .gitignore
   - .gitmessage
 - zsh
   - .zshrc
