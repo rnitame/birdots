@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cp zsh/zshrc.zsh ~/.zshrc
+cp zsh/starship.toml ~/.config/starship.toml
 cp vim/vimrc ~/.vimrc
 cp gitfile/gitignore ~/.gitignore
 cp gitfile/gitconfig ~/.gitconfig
