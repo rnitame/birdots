@@ -1,5 +1,3 @@
-tap 'homebrew/dupes'
-tap 'homebrew/science'
 tap 'phinze/cask'
 tap 'tldr-pages/tldr'
 tap 'facebook/fb'
@@ -30,3 +28,5 @@ brew 'tree'
 brew 'vim', args: ['with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
+
+brew cask install hyper
