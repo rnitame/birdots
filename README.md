@@ -8,8 +8,6 @@ Install file list
   - .gitmessage
 - zsh
   - .zshrc
-- vim
-  - .vimrc
 - Homebrew
   - brewfile
 - hyper
