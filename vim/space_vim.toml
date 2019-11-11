@@ -1,0 +1,22 @@
+[options]
+  colorscheme = "onedark"
+  enable_tabline_filetype_icon = true
+
+[[layers]]
+  name = "autocomplete"
+  auto-completion-return-key-behavior = "complete"
+  auto-completion-tab-key-behavior = "cycle"
+
+[[layers]]
+  name = "shell"
+  default_position = "top"
+  default_height = 30
+
+[[layers]]
+  name = "lang#javascript"
+
+[[layers]]
+  name = "lang#ruby"
+
+[[layers]]
+  name = "lang#go"
