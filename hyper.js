@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     fontSize: 15,
-    fontFamily: 'Noto Mono for Powerline, Menlo, monospace',
+    fontFamily: 'NotoMono Nerd Font Mono, Menlo, monospace',
     opacity: 0.9,
     summon: {
       hideDock: true,

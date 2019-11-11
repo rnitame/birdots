@@ -28,5 +28,3 @@ brew 'tree'
 brew 'vim', args: ['with-luajit', 'with-python3']
 brew 'xz'
 brew 'zsh'
-
-brew cask install hyper
