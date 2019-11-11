@@ -16,6 +16,18 @@ mkdir -p ~/Developer
 ## starship 初期化
 eval "$(starship init zsh)"
 
+## zplugin
+source $HOME/.zplugin/bin/zplugin.zsh
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light b4b4r07/enhancd
+
+autoload -U compinit
+compinit
+
 ## hyper の設定
 export LANG=ja_JP.UTF-8
 

@@ -3,7 +3,7 @@ add_newline = false
 
 [git_branch]
 symbol = "🌱 "
-truncation_length = 4
+truncation_length = 30
 
 [git_state]
 progress_divider = " of "
@@ -24,3 +24,23 @@ staged_count.style = "green"
 renamed = "👅"
 deleted = "🗑"
 
+[nodejs]
+disabled = true
+
+[ruby]
+disabled = true
+
+[kubernates]
+disabled = true
+
+[golang]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
+
+[java]
+disabled = true

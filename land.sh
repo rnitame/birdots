@@ -17,3 +17,5 @@ brew bundle cleanup
 ## SpaceVim インストール
 curl -sLf https://spacevim.org/install.sh | bash
 
+## zplugin インストール
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
