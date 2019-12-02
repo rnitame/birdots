@@ -18,5 +18,6 @@ cp hyper.js ~/.hyper.js
 cp vim/space_vim.toml ~/.SpaceVim.d/init.toml
 
 ## brewfile に書いたソフトウェアたちをインストール
-brew bundle --global 
+brew bundle --file=brew/Brewfile
+brew bundle --file=brew/BrewCaskfile
 brew bundle cleanup
