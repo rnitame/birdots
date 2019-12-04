@@ -1,0 +1,6 @@
+{
+    "workbench.colorTheme": "Dracula Soft",
+    "workbench.iconTheme": "vscode-icons",
+    "files.autoSave": "onFocusChange",
+    "editor.fontFamily": "Source Han Code JP, Monaco, 'Courier New', monospace"
+}
