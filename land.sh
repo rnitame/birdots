@@ -16,6 +16,7 @@ cp gitfile/gitmessage ~/.gitmessage
 cp brew/Brewfile ~/.Brewfile
 cp hyper.js ~/.hyper.js
 cp vim/space_vim.toml ~/.SpaceVim.d/init.toml
+cp karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 ## brewfile に書いたソフトウェアたちをインストール
 brew bundle --file=brew/Brewfile
