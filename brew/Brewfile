@@ -4,6 +4,7 @@ tap 'facebook/fb'
 
 brew 'coreutils'
 brew 'diff-so-fancy'
+brew 'ghq'
 brew 'gibo'
 brew 'git'
 brew 'go'

@@ -111,3 +111,7 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+# cd なしで移動
+setopt auto_cd
+setopt auto_pushd

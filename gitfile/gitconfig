@@ -43,4 +43,5 @@
     ci = commit
     cl = clone
     review = "!sh -c 'git fetch && git checkout $1' -"
-
+[ghq]
+    root = ~/src
