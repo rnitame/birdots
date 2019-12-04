@@ -17,6 +17,6 @@ brew 'reattach-to-user-namespace'
 brew 'starship'
 brew 'tldr'
 brew 'tree'
-brew 'vim', args: ['with-luajit', 'with-python3']
+brew 'vim'
 brew 'xz'
 brew 'zsh'

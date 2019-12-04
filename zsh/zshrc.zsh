@@ -10,9 +10,6 @@ case ${OSTYPE} in
     ;;
 esac
 
-# 開発系のものを置く場所
-mkdir -p ~/Developer
-
 ## starship 初期化
 eval "$(starship init zsh)"
 
@@ -24,6 +21,8 @@ autoload -Uz _zplugin
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zdharma/fast-syntax-highlighting
 zplugin light b4b4r07/enhancd
+zplugin ice from"gh-r" as"program"
+zplugin load junegunn/fzf-bin
 
 autoload -U compinit
 compinit

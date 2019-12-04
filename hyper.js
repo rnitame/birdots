@@ -8,6 +8,7 @@ module.exports = {
       hideOnBlur: true,
       hotkey: 'Ctrl+T'
     },
+    shell: "/usr/local/bin/zsh"
   },  
   plugins: [
     'hyper-dracula',
