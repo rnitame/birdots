@@ -7,16 +7,24 @@ Install file list
   - .gitconfig
   - .gitmessage
 - zsh
+  - starship.toml
   - .zshrc
 - Homebrew
-  - brewfile
+  - Brewfile
+  - BrewCaskfile
 - hyper
   - .hyper.js
+- karabiner
+  - karabiner.json
+- VSCode
+  - settings.json
+- Vim
+  - space\_vim.toml
 
 ## Requirement
 
-- Vim 7.4 (+ lua)
-- Zsh 5.2
+- Vim (+ lua)
+- Zsh
 - git
 - Homebrew
 
