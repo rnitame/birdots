@@ -5,6 +5,9 @@
     editor = vim
     excludesfile = ~/.gitignore
     compression = 0
+    pager = delta --theme='Dracula'
+[interactive]
+    diffFilter = delta --color-only
 [color]
     ui = true
     diff = auto
@@ -12,11 +15,6 @@
     branch = auto
 [push]
     default = tracking
-[pager]
-    # diff をきれいに表示する
-    log = diff-highlight | LESS=-R less
-    show = diff-highlight | LESS=-R less
-    diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [merge]
     tool = vimdiff
 [mergetool]

@@ -1,5 +1,5 @@
 # for diff-highlight
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin
 
 # OS ごとの処理
 case ${OSTYPE} in
@@ -77,3 +77,8 @@ bindkey '^m' do_enter
 # cd なしで移動
 setopt auto_cd
 setopt auto_pushd
+
+alias ls='exa'
+alias ll='exa -ahl --git'
+alias less='bat'
+alias cat='bat'

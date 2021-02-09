@@ -3,7 +3,7 @@ tap 'tldr-pages/tldr'
 tap 'facebook/fb'
 
 brew 'coreutils'
-brew 'diff-so-fancy'
+brew 'delta'
 brew 'ghq'
 brew 'gibo'
 brew 'git'
