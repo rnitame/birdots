@@ -1,4 +1,4 @@
-tap 'phinze/cask'
+tap 'homebrew/cask'
 tap 'tldr-pages/tldr'
 tap 'facebook/fb'
 
@@ -21,3 +21,5 @@ brew 'tree'
 brew 'vim'
 brew 'xz'
 brew 'zsh'
+brew 'bat'
+brew 'exa'
