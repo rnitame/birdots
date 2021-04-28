@@ -18,11 +18,11 @@ source $HOME/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light b4b4r07/enhancd
-zplugin ice from"gh-r" as"program"
-zplugin load junegunn/fzf-bin
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light b4b4r07/enhancd
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
 
 autoload -U compinit
 compinit
