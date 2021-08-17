@@ -1,4 +1,0 @@
-brew tap homebrew/cask-fonts
-
-brew cask install font-noto-nerd-font-mono  
-brew cask install hyper 

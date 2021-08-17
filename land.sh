@@ -6,8 +6,8 @@
 ## SpaceVim インストール
 curl -sLf https://spacevim.org/install.sh | bash
 
-## zplugin インストール
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+## zinit インストール
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 cp zsh/zshrc.zsh ~/.zshrc
 cp zsh/starship.toml ~/.config/starship.toml
@@ -20,6 +20,5 @@ cp karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 cp vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json 
 
 ## brewfile に書いたソフトウェアたちをインストール
-brew bundle --file=brew/Brewfile
-brew bundle --file=brew/BrewCaskfile
+brew bundle --file=~/.Brewfile
 brew bundle cleanup
