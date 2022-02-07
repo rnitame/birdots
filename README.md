@@ -11,13 +11,10 @@ Install file list
   - .zshrc
 - Homebrew
   - Brewfile
-  - BrewCaskfile
 - hyper
   - .hyper.js
 - karabiner
   - karabiner.json
-- VSCode
-  - settings.json
 - Vim
   - space\_vim.toml
 
