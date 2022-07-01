@@ -1,5 +1,5 @@
-# for diff-highlight
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin
+# for diff-highlight & ruby
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin:$HOME/.rbenv/bin
 
 # OS ごとの処理
 case ${OSTYPE} in
@@ -13,10 +13,14 @@ esac
 ## starship 初期化
 eval "$(starship init zsh)"
 
+## rbenv 初期化
+eval "$(rbenv init -)"
+
+
 ## zplugin
-source $HOME/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source $HOME/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
@@ -66,7 +70,7 @@ function do_enter() {
     if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
         echo
         echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -uno
+        git status
     fi
     zle reset-prompt
     return 0
@@ -82,3 +86,6 @@ alias ls='exa'
 alias ll='exa -ahl --git'
 alias less='bat'
 alias cat='bat'
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+test -f '/Users/tummy/Library/Preferences/netlify/helper/path.zsh.inc' && source '/Users/tummy/Library/Preferences/netlify/helper/path.zsh.inc'

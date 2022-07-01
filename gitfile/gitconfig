@@ -5,7 +5,7 @@
     editor = vim
     excludesfile = ~/.gitignore
     compression = 0
-    pager = delta --theme='Dracula'
+    pager = delta
 [interactive]
     diffFilter = delta --color-only
 [color]
@@ -42,4 +42,17 @@
     cl = clone
     review = "!sh -c 'git fetch && git checkout $1' -"
 [ghq]
-    root = ~/src
+  root = ~/src
+[delta]
+  light = false
+  side-by-side = true
+  line-numbers = true
+  features = Dracula
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /Users/tummy/Library/Preferences/netlify/helper/git-config
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true

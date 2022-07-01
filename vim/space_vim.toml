@@ -1,5 +1,8 @@
+[[custom_plugins]]
+  name = "dracula/vim"
 [options]
-  colorscheme = "onedark"
+  colorscheme = "dracula"
+  colorscheme_bg = "dark"
   enable_tabline_filetype_icon = true
 
 [[layers]]

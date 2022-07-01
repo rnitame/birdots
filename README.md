@@ -33,5 +33,17 @@ $ cd birdots
 $ bash ./land.sh
 ```
 
+## Software
+Chrome
+Raycast
+Hyper
+1Password
+Slack
+Xcode
+Jetbrains Toolbox
+Karabiner
+Google IME
+Authy
+
 # Author
 [rnitame](https://github.com/rnitame)
