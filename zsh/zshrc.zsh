@@ -1,5 +1,5 @@
 # for diff-highlight & ruby
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin:$HOME/.rbenv/bin
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin:$HOME/.rbenv/bin:/opt/homebrew/bin
 
 # OS ごとの処理
 case ${OSTYPE} in
@@ -18,7 +18,9 @@ eval "$(rbenv init -)"
 
 
 ## zplugin
-source $HOME/.zinit/bin/zinit.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+source "${ZINIT_HOME}/zinit.zsh"
+
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 

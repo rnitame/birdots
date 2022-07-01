@@ -1,13 +1,13 @@
 #!/bin/sh
 
 ## Homebrew インストール
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ## SpaceVim インストール
 curl -sLf https://spacevim.org/install.sh | bash
 
 ## zinit インストール
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 cp zsh/zshrc.zsh ~/.zshrc
 cp zsh/starship.toml ~/.config/starship.toml
