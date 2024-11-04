@@ -30,6 +30,10 @@ setopt auto_pushd
 ## starship 初期化
 eval "$(starship init zsh)"
 
+## asdf
+eval "$(brew --prefix asdf)/asdf.sh"
+. ~/.asdf/plugins/java/set-java-home.zsh
+
 ## zplugin
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
