@@ -1,21 +1,34 @@
-# for diff-highlight & ruby
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight:/usr/local/sbin:$HOME/.rbenv/bin:/opt/homebrew/bin
+alias ls='exa'
+alias ll='exa -ahl --git'
+alias less='bat'
+alias cat='bat'
 
-# OS ごとの処理
-case ${OSTYPE} in
-    darwin*)
-        export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-        export ANDROID_HOME=$HOME/Library/Android/sdk
-        export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-    ;;
-esac
+function do_enter() {
+    if [ -n "$BUFFER" ]; then
+        zle accept-line
+        return 0
+    fi
+    echo
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+        echo
+        echo -e "\e[0;33m--- git status ---\e[0m"
+        git status
+    fi
+    zle reset-prompt
+    return 0
+}
+zle -N do_enter
+bindkey '^m' do_enter
+
+# cd なしで移動
+setopt auto_cd
+setopt auto_pushd
+
+# load local
+[ -f ${HOME}/.zsh/.zshrc.local ] && source ${HOME}/.zsh/.zshrc.local
 
 ## starship 初期化
 eval "$(starship init zsh)"
-
-## rbenv 初期化
-eval "$(rbenv init -)"
-
 
 ## zplugin
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -62,32 +75,3 @@ tabtitle_preexec() {
 }
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions tabtitle_preexec)
-
-function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status
-    fi
-    zle reset-prompt
-    return 0
-}
-zle -N do_enter
-bindkey '^m' do_enter
-
-# cd なしで移動
-setopt auto_cd
-setopt auto_pushd
-
-alias ls='exa'
-alias ll='exa -ahl --git'
-alias less='bat'
-alias cat='bat'
-
-# The next line updates PATH for Netlify's Git Credential Helper.
-test -f '/Users/tummy/Library/Preferences/netlify/helper/path.zsh.inc' && source '/Users/tummy/Library/Preferences/netlify/helper/path.zsh.inc'
