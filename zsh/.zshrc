@@ -1,5 +1,5 @@
-alias ls='exa'
-alias ll='exa -ahl --git'
+alias ls='eza'
+alias ll='eza -ahl --git'
 alias less='bat'
 alias cat='bat'
 
@@ -24,14 +24,11 @@ bindkey '^m' do_enter
 setopt auto_cd
 setopt auto_pushd
 
-# load local
-[ -f ${HOME}/.zsh/.zshrc.local ] && source ${HOME}/.zsh/.zshrc.local
-
 ## starship 初期化
 eval "$(starship init zsh)"
 
 ## asdf
-eval "$(brew --prefix asdf)/asdf.sh"
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 . ~/.asdf/plugins/java/set-java-home.zsh
 
 ## zplugin
@@ -79,3 +76,13 @@ tabtitle_preexec() {
 }
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions tabtitle_preexec)
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
