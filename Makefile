@@ -5,10 +5,11 @@ git:
 	ln -s -f ${PWD}/gitfile/gitconfig ${HOME}/.gitconfig
 	@echo git phony done
 
-.PHONY: hyper
-hyper:
-	ln -s -f ${PWD}/hyper/hyper.js ${HOME}/.hyper.js
-	@echo hyper phony done
+.PHONY: ghostty
+ghostty:
+	if [ ! -d ${HOME}/.config/ghostty ]; then mkdir -p ${HOME}/.config/ghostty; fi
+	ln -s -f ${PWD}/ghostty/config ${HOME}/.config/ghostty/config
+	@echo ghostty phony done
 
 .PHONY: vim
 vim:
@@ -61,7 +62,7 @@ pre:
 	@echo pre phony done
 
 .PHONY: conf
-conf: git hyper starship-conf karabiner
+conf: git ghostty starship-conf karabiner
 
 .PHONY: all
 all: pre brew vim zsh conf starship language
