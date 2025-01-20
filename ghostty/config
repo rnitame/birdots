@@ -6,6 +6,6 @@ window-theme = ghostty
 background-opacity = 0.9
 macos-titlebar-style = transparent
 font-size = 15
-font-family = "Noto Mono for Powerline"
+font-family = "SauceCodePro NFM"
 keybind = global:ctrl+t=toggle_visibility
 
