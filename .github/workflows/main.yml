@@ -1,18 +1,17 @@
-on:
-  push:
-    branches:
-      - main
+on: pull_request
 
 permissions:
   contents: read
 
 jobs:
-  make:
+  main:
     runs-on: macos-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup birdots
-        run: make all
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/rnitame/birdots.git
+

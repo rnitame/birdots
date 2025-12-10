@@ -1,12 +1,13 @@
 # dotfiles
 macOS Only
 
+## Requirements
+git 
+
 ## Install
 
 ```
-$ git clone git@github.com:rnitame/birdots.git
-$ cd birdots
-$ make all
+$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:rnitame/birdots.git
 ```
 
 
