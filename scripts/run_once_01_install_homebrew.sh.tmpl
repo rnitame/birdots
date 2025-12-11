@@ -2,8 +2,11 @@
 
 {{ if eq .chezmoi.os "darwin" }}
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# CI で重い処理をしないように分岐
+if [[ "${CI:-false}" == "false" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew bundle --file="$HOME/.Brewfile"
+  brew bundle --file="$HOME/.Brewfile"
+fi
 
 {{ end }}
