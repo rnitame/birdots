@@ -1,0 +1,51 @@
+[user]
+    name = Ryo Nitami
+    email = nitry.n2t1m1+github@gmail.com
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+    compression = 0
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+[push]
+    default = tracking
+[merge]
+    tool = vimdiff
+[mergetool]
+    keepBackup = false
+[commit]
+    template = ~/.gitmessage
+    verbose = true
+[alias]
+    # git の alias 一覧
+    ali = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+    # pretty な git log
+    pl = log --graph --branches --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+    # ローカルとリモートのブランチ同期
+    refresh = !git fetch origin && git remote prune origin
+    # 全ての変更をステージにあげる
+    aa = !git add .  && git add -u && git status
+    # コミットメッセージ変更
+    cam = commit --amend
+
+    # コマンド短縮形
+    co = checkout
+    br = branch
+    l = log
+    st = status
+    ci = commit
+    cl = clone
+    review = "!sh -c 'git fetch && git checkout $1' -"
+[ghq]
+  root = ~/src
+[delta]
+  light = false
+  side-by-side = true
+  line-numbers = true
+  features = Dracula

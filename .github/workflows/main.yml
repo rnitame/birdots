@@ -1,18 +1,21 @@
 on:
-  push:
+  pull_request:
     branches:
       - main
 
-permissions:
-  contents: read
-
 jobs:
-  make:
+  main:
     runs-on: macos-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+      - name: Run tests
+        env:
+          CI: "true"
+        run: |
+          brew install bats-core
 
-      - name: Setup birdots
-        run: make all
+          bash -c "$(curl -fsLS get.chezmoi.io)" -- init rnitame/birdots --branch ${{github.head_ref}} --apply
+
+          bats -r tests
