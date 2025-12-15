@@ -3,6 +3,7 @@
 @test "exist dotfiles after installation" {
     files_exists=(
         "${HOME}/.config/ghostty/config"
+        "${HOME}/.config/mise/config.toml"
         "${HOME}/.config/starship.toml"
         "${HOME}/.config/karabiner/karabiner.json"
         "${HOME}/.Brewfile"
