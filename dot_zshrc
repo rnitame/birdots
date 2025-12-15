@@ -27,9 +27,8 @@ setopt auto_pushd
 ## starship 初期化
 eval "$(starship init zsh)"
 
-## asdf
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-. ~/.asdf/plugins/java/set-java-home.zsh
+## mise
+eval "$(mise activate zsh)"
 
 ## zplugin
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -46,9 +45,6 @@ zinit load junegunn/fzf-bin
 
 autoload -U compinit
 compinit
-
-## hyper の設定
-export LANG=ja_JP.UTF-8
 
 # Override auto-title when static titles are desired ($ title My new title)
 title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
