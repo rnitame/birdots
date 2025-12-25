@@ -1,0 +1,9 @@
+version: "1.0"
+defaults:
+  base_dir: .git/worktrees
+
+hooks:
+  post_create:
+    # TODO: Android の場合 gradlew clean && build をやったりする想定
+    - type: command
+      command: wtp list
