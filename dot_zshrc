@@ -30,6 +30,9 @@ eval "$(starship init zsh)"
 ## mise
 eval "$(mise activate zsh)"
 
+## git-wt
+eval "$(git wt --init zsh)"
+
 ## zplugin
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
