@@ -6,6 +6,6 @@ window-theme = ghostty
 background-opacity = 0.9
 macos-titlebar-style = transparent
 font-size = 15
-font-family = "Intel One Mono"
+font-family = "UDEV Gothic 35NFLG"
 keybind = global:ctrl+t=toggle_visibility
 
