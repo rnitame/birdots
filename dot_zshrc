@@ -2,7 +2,6 @@ alias ls='eza'
 alias ll='eza -ahl --git'
 alias less='bat'
 alias cat='bat'
-alias vim='nvim'
 
 function do_enter() {
     if [ -n "$BUFFER" ]; then
