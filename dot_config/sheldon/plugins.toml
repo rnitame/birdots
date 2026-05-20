@@ -1,0 +1,20 @@
+shell = "zsh"
+
+apply = ["defer"]
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+use = ["fast-syntax-highlighting.plugin.zsh"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
