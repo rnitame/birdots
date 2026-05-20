@@ -25,30 +25,17 @@ bindkey '^m' do_enter
 setopt auto_cd
 setopt auto_pushd
 
-## starship 初期化
+## starship
 eval "$(starship init zsh)"
 
 ## mise
 eval "$(mise activate zsh)"
 
-## git-wt
-eval "$(git wt --init zsh)"
+## sheldon
+eval "$(sheldon source)"
 
-## zplugin
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-source "${ZINIT_HOME}/zinit.zsh"
-
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
-zinit light b4b4r07/enhancd
-zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
-
-autoload -U compinit
-compinit
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Override auto-title when static titles are desired ($ title My new title)
 title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
@@ -76,13 +63,3 @@ tabtitle_preexec() {
 }
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions tabtitle_preexec)
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-### End of Zinit's installer chunk

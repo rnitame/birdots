@@ -4,6 +4,7 @@
     files_exists=(
         "${HOME}/.config/ghostty/config"
         "${HOME}/.config/starship.toml"
+        "${HOME}/.config/sheldon/plugins.toml"
         "${HOME}/.config/karabiner/karabiner.json"
         "${HOME}/.Brewfile"
         "${HOME}/.gitconfig"
