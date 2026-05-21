@@ -10,12 +10,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Run tests
+
+      - name: Run chezmoi
         env:
           CI: "true"
+        run: bash -c "$(curl -fsLS get.chezmoi.io)" -- init rnitame/birdots --branch ${{github.head_ref}} --apply
+
+      - name: Run tests
         run: |
           brew install bats-core
-
-          bash -c "$(curl -fsLS get.chezmoi.io)" -- init rnitame/birdots --branch ${{github.head_ref}} --apply
 
           bats -r tests
