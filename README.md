@@ -1,6 +1,10 @@
 # birdots
+## Requirements
+- Xcode
+- git
+
 ## install
 
 ```bash
-bash -c "$(curl -fsLS get.chezmoi.io)" -- init rnitame/birdots --apply
+bash -c "$(curl -fsLS get.chezmoi.io)" -- init --ssh rnitame/birdots --apply
 ```

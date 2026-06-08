@@ -1,0 +1,8 @@
+#!/bin/bash
+set -ep
+
+# CI で重い処理をしないように分岐
+if [[ "${CI:-false}" == "false" ]]; then
+  source ~/.zshenv
+  mise install
+fi

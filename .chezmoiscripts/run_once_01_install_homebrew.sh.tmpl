@@ -1,10 +1,13 @@
 #!/bin/bash
+set -ep
 
 {{ if eq .chezmoi.os "darwin" }}
 
 # CI で重い処理をしないように分岐
 if [[ "${CI:-false}" == "false" ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  source ~/.zshenv
 
   brew bundle --file="$HOME/.Brewfile"
 fi
