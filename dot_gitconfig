@@ -6,6 +6,7 @@
     excludesfile = ~/.gitignore
     compression = 0
     pager = delta
+    quotePath = false
 [interactive]
     diffFilter = delta --color-only
 [color]
