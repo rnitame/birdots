@@ -1,0 +1,60 @@
+tap "iandol/adobe-fonts"
+tap "k1low/tap", trusted: true
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Bash Automated Testing System
+brew "bats-core"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Modern, maintained replacement for ls
+brew "eza"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Remote repository management made easy
+brew "ghq"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Convert source code to formatted text with syntax highlighting
+brew "highlight"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Display and control your Android device
+brew "scrcpy"
+# Fast, configurable, shell plugin manager
+brew "sheldon"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Command-line interface for 1Password
+cask "1password-cli"
+# Application uninstaller
+cask "appcleaner"
+# Japanese input method
+cask "azookey"
+cask "font-noto-mono-for-powerline"
+cask "font-noto-sans-cjk"
+cask "iandol/adobe-fonts/font-source-han-code-jp", trusted: true
+cask "font-udev-gothic-nf"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# JetBrains tools manager
+cask "jetbrains-toolbox"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Multiplayer code editor
+cask "zed"
