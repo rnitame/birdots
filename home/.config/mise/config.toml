@@ -1,0 +1,23 @@
+[tools]
+java = "latest"
+node = "latest"
+pnpm = "latest"
+
+[settings.history]
+sync = "manual"
+
+[bootstrap.services.mise-history]
+builtin = "history-watch"
+
+[dotfiles]
+"~/.config/ghostty/config" = { mode = "track" }
+"~/.config/mise/config.toml" = { mode = "track" }
+"~/.config/raycast/raycast.rayconfig" = { mode = "track" }
+"~/.config/sheldon/plugins.toml" = { mode = "track" }
+"~/.config/starship.toml" = { mode = "track" }
+"~/.config/zed/settings.json" = { mode = "track" }
+"~/.gitconfig" = { mode = "track" }
+"~/.homebrew/Brewfile" = { mode = "track" }
+"~/.zprofile" = { mode = "track" }
+"~/.zshenv" = { mode = "track" }
+"~/.zshrc" = { mode = "track" }

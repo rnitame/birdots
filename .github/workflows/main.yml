@@ -6,18 +6,18 @@ on:
 jobs:
   main:
     runs-on: macos-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Run chezmoi
-        env:
-          CI: "true"
-        run: bash -c "$(curl -fsLS get.chezmoi.io)" -- init rnitame/birdots --branch ${{github.head_ref}} --apply
-
-      - name: Run tests
+      - uses: actions/checkout@v6
+      - name: Install test tools
+        run: brew install mise bats-core
+      - name: Bootstrap in an isolated home
+        shell: bash
         run: |
-          brew install bats-core
-
-          bats -r tests
+          export HOME="$RUNNER_TEMP/birdots-home"
+          export MISE_CONFIG_DIR="$HOME/.config/mise"
+          export MISE_STATE_DIR="$HOME/.local/state/mise"
+          export MISE_DATA_DIR="$HOME/.local/share/mise"
+          mkdir -p "$HOME"
+          bash scripts/bootstrap.sh --files-only
+          mise install
+          mise exec -- bats -r tests
