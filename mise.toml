@@ -1,0 +1,12 @@
+[dotfiles]
+"~/.config/ghostty/config" = { source = "home/.config/ghostty/config", mode = "copy" }
+"~/.config/mise/config.toml" = { source = "home/.config/mise/config.toml", mode = "copy" }
+"~/.config/raycast/raycast.rayconfig" = { source = "home/.config/raycast/raycast.rayconfig", mode = "copy" }
+"~/.config/sheldon/plugins.toml" = { source = "home/.config/sheldon/plugins.toml", mode = "copy" }
+"~/.config/starship.toml" = { source = "home/.config/starship.toml", mode = "copy" }
+"~/.config/zed/settings.json" = { source = "home/.config/zed/settings.json", mode = "copy", permissions = "0600" }
+"~/.gitconfig" = { source = "home/.gitconfig", mode = "copy" }
+"~/.homebrew/Brewfile" = { source = "home/.homebrew/Brewfile", mode = "copy" }
+"~/.zprofile" = { source = "home/.zprofile", mode = "copy" }
+"~/.zshenv" = { source = "home/.zshenv", mode = "copy" }
+"~/.zshrc" = { source = "home/.zshrc", mode = "copy" }

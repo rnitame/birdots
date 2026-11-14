@@ -1,70 +1,41 @@
 # birdots
 
-mise の track mode で実ファイルを管理します。ローカルの編集は自動で履歴へ保存し、リモートとの同期は手動で行います（mise 2026.10.25 以降、macOS）。
+mise の copy モードで設定を配置し、実ファイルの編集を好きなタイミングで birdots に取り込みます。mise 2026.11.8 以降を使用します。
 
-## 初期セットアップ
+## 初期配置
 
-Xcode Command Line Tools と Homebrew を用意し、このリポジトリを clone します。
-
-```bash
-brew install mise
-git clone git@github.com:rnitame/birdots.git
-cd birdots
-bash scripts/bootstrap.sh
-```
-
-既存の chezmoi 管理から移行する場合は、現在の設定を `home/` と比較してから実行します。
+Homebrew と mise を用意して、このリポジトリで実行します。
 
 ```bash
-bash scripts/bootstrap.sh --migrate
+mise trust
+mise dot diff
+mise dot apply
+brew bundle --file="$HOME/.homebrew/Brewfile"
+mise install
 ```
 
-異なる既存ファイルは `~/.local/state/birdots/backups/<日時>/` にバックアップしてから置き換えます。通常実行では差分があれば停止します。`--files-only` はファイル配置と初回履歴保存だけを行い、Homebrew・ツールのインストールとサービス登録を省略します。
+既存の設定と差分がある場合は、内容を確認・バックアップしてから適用してください。
 
-`home/` は初期配置用のスナップショットです。日常の編集はホームディレクトリの実ファイルで行い、初期配置スクリプトは再同期には使いません。履歴は `~/.local/state/mise/history/repo.git` に保存され、通常の作業ツリーへ自動で戻ることはありません。初期配置用スナップショットを更新したい場合は、実ファイルを `home/` にコピーして通常の Git コミットを作成します。
+## 日常の更新
 
-## 手動同期
-
-同期用の履歴には通常のソースブランチとは別の `mise-sync` ブランチを使います。最初のマシンで、一度だけ初期履歴を公開して接続します。
+`~/.zshrc` や `~/.homebrew/Brewfile` などを普段どおり編集し、birdots のディレクトリで実行します。
 
 ```bash
-mise dot save
-git -C ~/.local/state/mise/history/repo.git push \
-  git@github.com:rnitame/birdots.git refs/heads/main:refs/heads/mise-sync
-mise dot origin set git@github.com:rnitame/birdots.git \
-  --branch mise-sync --sync manual --yes
+mise dot add --changed
+git diff
+git add -p
+git commit -m "Update dotfiles"
+git push
 ```
 
-公開前に追跡対象と履歴を確認してください。手動同期でも途中のコミットをすべて送信します。認証情報は追跡対象の外へ置きます。`config.local.toml` や `.env`、アプリの設定ディレクトリ全体は追跡しません。
+`mise dot add --changed` がコピー配置したファイルの編集を `home/` へ取り込みます。commit・push は自分で実行します。Brewfile はファイル自体の編集を取り込みます。インストール済みパッケージから再生成する場合は、先に `brew bundle dump --global --force` を実行します。
 
-別の Mac で初期配置済みの履歴と異なる履歴を接続すると衝突するため、同期先の履歴を採用してセットアップします。既存ファイルに差分がある場合は、先に内容を比較してバックアップします。
+別の Mac の変更を取り込むときは、手元の編集を先に取り込んで commit してから実行します。
 
 ```bash
-mise bootstrap --adopt 'git@github.com:rnitame/birdots.git?ref=mise-sync'
-mise dot origin set git@github.com:rnitame/birdots.git \
-  --branch mise-sync --sync manual --yes
+git pull --rebase
+mise dot diff
+mise dot apply
 ```
 
-日常の操作:
-
-```bash
-mise dot status           # 追跡対象・保存サービス・同期状態
-mise dot history          # 保存履歴を確認
-mise dot save             # watcher を待たずに現在の編集を保存
-mise dot sync             # 保存済み履歴を push、リモートの履歴を fetch
-mise dot pull             # fetch 済みの内容を実ファイルへ適用
-mise install              # ツール設定が変わったとき
-brew bundle --file="$HOME/.homebrew/Brewfile"  # Brewfile が変わったとき
-```
-
-`settings.history.sync = "manual"` なので、バックグラウンドの push・fetch・取り込みは行いません。保存サービスは `mise bootstrap services apply` で登録します。取り込みが衝突した場合は `mise dot conflicts` で確認し、`mise dot pull --take-remote <path>` または `--keep-local <path>` で解決します。
-
-## 確認
-
-```bash
-mise dot status
-mise settings get history.sync  # manual
-bats -r tests
-```
-
-サービスが動かないときは `mise doctor` と `launchctl print gui/$(id -u)/dev.mise.mise-history` を確認します。
+ツールや Brewfile が変わった場合は `mise install` や `brew bundle --file="$HOME/.homebrew/Brewfile"` も実行します。

@@ -18,6 +18,7 @@ jobs:
           export MISE_STATE_DIR="$HOME/.local/state/mise"
           export MISE_DATA_DIR="$HOME/.local/share/mise"
           mkdir -p "$HOME"
-          bash scripts/bootstrap.sh --files-only
+          mise trust
+          mise dot apply
           mise install
           mise exec -- bats -r tests
