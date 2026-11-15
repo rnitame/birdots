@@ -12,6 +12,8 @@ brew "colima"
 brew "docker"
 # Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Remote repository management made easy
@@ -22,8 +24,18 @@ brew "git"
 brew "git-delta"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Terminal Markdown previewer with a GUI-like experience
+brew "leaf-markdown-viewer"
+# Package manager for the Lua programming language
+brew "luarocks"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Display and control your Android device
 brew "scrcpy"
 # Fast, configurable, shell plugin manager
@@ -62,5 +74,3 @@ cask "google-japanese-ime"
 cask "homebrew-app"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Multiplayer code editor
-cask "zed"

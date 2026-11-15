@@ -4,9 +4,21 @@
 "~/.config/raycast/raycast.rayconfig" = { source = "home/.config/raycast/raycast.rayconfig", mode = "copy" }
 "~/.config/sheldon/plugins.toml" = { source = "home/.config/sheldon/plugins.toml", mode = "copy" }
 "~/.config/starship.toml" = { source = "home/.config/starship.toml", mode = "copy" }
-"~/.config/zed/settings.json" = { source = "home/.config/zed/settings.json", mode = "copy", permissions = "0600" }
 "~/.gitconfig" = { source = "home/.gitconfig", mode = "copy" }
 "~/.homebrew/Brewfile" = { source = "home/.homebrew/Brewfile", mode = "copy" }
 "~/.zprofile" = { source = "home/.zprofile", mode = "copy" }
 "~/.zshenv" = { source = "home/.zshenv", mode = "copy" }
 "~/.zshrc" = { source = "home/.zshrc", mode = "copy" }
+"~/.config/nvim/.gitignore" = { source = "home/.config/nvim/.gitignore", mode = "copy" }
+"~/.config/nvim/.neoconf.json" = { source = "home/.config/nvim/.neoconf.json", mode = "copy" }
+"~/.config/nvim/LICENSE" = { source = "home/.config/nvim/LICENSE", mode = "copy" }
+"~/.config/nvim/README.md" = { source = "home/.config/nvim/README.md", mode = "copy" }
+"~/.config/nvim/init.lua" = { source = "home/.config/nvim/init.lua", mode = "copy" }
+"~/.config/nvim/lazy-lock.json" = { source = "home/.config/nvim/lazy-lock.json", mode = "copy" }
+"~/.config/nvim/lazyvim.json" = { source = "home/.config/nvim/lazyvim.json", mode = "copy" }
+"~/.config/nvim/lua/config/autocmds.lua" = { source = "home/.config/nvim/lua/config/autocmds.lua", mode = "copy" }
+"~/.config/nvim/lua/config/keymaps.lua" = { source = "home/.config/nvim/lua/config/keymaps.lua", mode = "copy" }
+"~/.config/nvim/lua/config/lazy.lua" = { source = "home/.config/nvim/lua/config/lazy.lua", mode = "copy" }
+"~/.config/nvim/lua/config/options.lua" = { source = "home/.config/nvim/lua/config/options.lua", mode = "copy" }
+"~/.config/nvim/lua/plugins/example.lua" = { source = "home/.config/nvim/lua/plugins/example.lua", mode = "copy" }
+"~/.config/nvim/stylua.toml" = { source = "home/.config/nvim/stylua.toml", mode = "copy" }

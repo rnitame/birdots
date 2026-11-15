@@ -39,3 +39,9 @@ mise dot apply
 ```
 
 ツールや Brewfile が変わった場合は `mise install` や `brew bundle --file="$HOME/.homebrew/Brewfile"` も実行します。
+
+Neovim の設定を新しいファイルへ分割した場合は、birdots 内でそのファイルを登録します。例として `lua/plugins/my-plugin.lua` を追加する場合は以下を実行します。
+
+```bash
+mise dot add --local --mode copy --source home/.config/nvim/lua/plugins/my-plugin.lua ~/.config/nvim/lua/plugins/my-plugin.lua
+```
